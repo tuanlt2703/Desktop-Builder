@@ -53,6 +53,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ComponentsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Product.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -60,6 +68,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\ComponentsList.xaml.cs">
+      <DependentUpon>ComponentsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Product.xaml.cs">
+      <DependentUpon>Product.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -92,6 +106,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Advisor.png" />
+    <Resource Include="Image\Case.png" />
+    <Resource Include="Image\Component.png" />
+    <Resource Include="Image\Cpu.png" />
+    <Resource Include="Image\CpuAirCooler.png" />
+    <Resource Include="Image\Custom.png" />
+    <Resource Include="Image\Fancase.png" />
+    <Resource Include="Image\HDD.png" />
+    <Resource Include="Image\Mainboard.png" />
+    <Resource Include="Image\Mark.png" />
+    <Resource Include="Image\Monitor.png" />
+    <Resource Include="Image\ODD.png" />
+    <Resource Include="Image\PSU.png" />
+    <Resource Include="Image\RAM.png" />
+    <Resource Include="Image\Sound Card.png" />
+    <Resource Include="Image\SSD.png" />
+    <Resource Include="Image\VGA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ProductImg\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,8 +1,63 @@
-﻿<Window x:Class="DesktopBuilder.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="DesktopBuilder" Height="350" Width="525">
+        xmlns:Controls="clr-namespace:DesktopBuilder.Controls" x:Class="DesktopBuilder.MainWindow"
+        Title="DesktopBuilder" Height="540" Width="785">
     <Grid>
-        
+        <!--First Button-->
+        <Button x:Name="btnComponents" Margin="12,20,648,383" Click="btnComponents_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <ContentPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <StackPanel>
+                <Image Source="/Image/Component.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="112" Margin="3,0"/>
+            </StackPanel>
+        </Button>
+        <Rectangle x:Name="recComponentSelected" Visibility="Hidden" HorizontalAlignment="Left" Height="111" Margin="11,15,0,0" Stroke="#00B0F0" StrokeThickness="2" VerticalAlignment="Top" Width="117"/>
+        <Grid x:Name="gridComponents" HorizontalAlignment="Left" VerticalAlignment="Top" Width="641" Height="510" Margin="138,0,0,0" Visibility="Hidden">
+            <Controls:ComponentsList HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </Grid>
+
+        <!--Second Button-->
+        <Button x:Name="btnAdvisor" Margin="10,196,650,223" Click="btnAdvisor_Click" >
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <ContentPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <StackPanel>
+                <Image Source="/Image/Advisor.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="104" />
+            </StackPanel>
+        </Button>
+        <Rectangle x:Name="recAdvisorSelected" Visibility="Hidden" HorizontalAlignment="Left" Height="111" Margin="7,186,0,0" Stroke="#2F5E73" StrokeThickness="2" VerticalAlignment="Top" Width="117"/>
+        <Grid x:Name="gridAdvisor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="641" Height="510" Margin="138,0,0,0" Visibility="Hidden">
+            <TextBlock Text="this is advisor"/>
+        </Grid>
+
+        <!--Third Button-->
+        <Button x:Name="btnCustom" Margin="9,363,651,32" Click="btnCustom_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <ContentPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <StackPanel>
+                <Image Source="/Image/Custom.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="112"/>
+            </StackPanel>
+        </Button>
+        <Rectangle x:Name="recCustomSelected" Visibility="Hidden" HorizontalAlignment="Left" Height="123" Margin="8,356,0,0" Stroke="#009688" StrokeThickness="2" VerticalAlignment="Top" Width="117"/>
+        <Grid x:Name="gridCustom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="641" Height="510" Margin="138,0,0,0" Visibility="Hidden">
+            <TextBlock Text="this page let you custom your pc"/>
+        </Grid>
+
+        <Rectangle HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="#00B0F0" StrokeThickness="5" Height="511" Width="4" Margin="134,0,0,0"/>
     </Grid>
 </Window>
