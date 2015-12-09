@@ -37,6 +37,8 @@ namespace DesktopBuilder.Classes
             CPU tmp = new CPU();
             tmp.setifo();
             CPUList.Add(tmp);
+            CPUList.Add(tmp);
+            CPUList.Add(tmp);
         }
         public ArrayList List(int index = 0)
         {

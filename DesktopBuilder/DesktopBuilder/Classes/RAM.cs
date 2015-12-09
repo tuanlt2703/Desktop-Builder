@@ -23,7 +23,7 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
-        public string BriefIfo()
+        public string BriefInfo()
         {
             string ifo;
             ifo = this._Manufacturer + " - " + this._Capacity.ToString() +"Gb\n bus" + this._Bus.ToString()

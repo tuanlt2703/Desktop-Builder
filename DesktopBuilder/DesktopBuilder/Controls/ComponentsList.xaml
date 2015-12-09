@@ -181,6 +181,19 @@
             <UniformGrid x:Name="ProductList" Columns="4" VerticalAlignment="Top" />
         </ScrollViewer>
 
-        <Button Content="Button" HorizontalAlignment="Left" Margin="60,24,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button x:Name="btnBackWard" Margin="61,21,530,464" Click="btnBackWard_Click" Visibility="Hidden">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <ContentPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <StackPanel>
+                <Image Source="/Image/GoBack.png" Height="24"/>
+            </StackPanel>
+        </Button>
+
+        <Button Visibility="Hidden" Content="test" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
     </Grid>
 </UserControl>

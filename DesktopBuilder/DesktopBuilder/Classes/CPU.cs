@@ -11,7 +11,6 @@ namespace DesktopBuilder.Classes
         #region Constructor
         public CPU()
         {
-            setifo();
         }
         #endregion
 
