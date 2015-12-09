@@ -8,22 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/advisor.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/case.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/component.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/cpu.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/cpuaircooler.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/custom.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/fancase.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/hdd.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/mainboard.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/mark.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/monitor.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/odd.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/psu.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/ram.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/sound%20card.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/ssd.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/vga.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("productimg/default.png")]
 
 

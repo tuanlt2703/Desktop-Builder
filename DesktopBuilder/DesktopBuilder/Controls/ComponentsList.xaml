@@ -7,11 +7,10 @@
     <Grid>
         <Label x:Name="lbPageTitle" Content="Hardware Components" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#00B0F0"  Margin="207,10,176,0" FontSize="24" />
 
-        <Grid x:Name="gridComList" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible">
-            
-            <Button x:Name="btnCPUList" Margin="38,94,516,345">
+        <Grid x:Name="gridComList" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button x:Name="btnCPU" Margin="38,94,516,345" Click="btnCPU_Click">
                 <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate TargetType="Button">
                         <Grid>
                             <ContentPresenter/>
                         </Grid>
@@ -23,7 +22,7 @@
             </Button>
             <Label x:Name="lbCpu" Content="CPU" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="59,167,0,0"/>
 
-            <Button x:Name="btnMainboard" Margin="149,57,405,345">
+            <Button x:Name="btnMainboard" Margin="149,57,405,345" Click="btnMainboard_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -37,7 +36,7 @@
             </Button>
             <Label x:Name="lbMain" Content="Mainboard" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="143,167,0,0"/>
 
-            <Button x:Name="btnRAM" Margin="280,80,274,345">
+            <Button x:Name="btnRAM" Margin="280,80,274,345" Click="btnRAM_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -51,7 +50,7 @@
             </Button>
             <Label x:Name="lbRAM" Content="RAM" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="298,167,0,0"/>
 
-            <Button x:Name="btnHDD" Margin="405,81,149,345">
+            <Button x:Name="btnHDD" Margin="405,81,149,345" Click="btnHDD_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -65,7 +64,7 @@
             </Button>
             <Label x:Name="lbHDD" Content="HDD" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="424,167,0,0" ToolTip="Ổ Cứng"/>
 
-            <Button x:Name="btnSSD" Margin="517,81,37,345">
+            <Button x:Name="btnSSD" Margin="517,81,37,345" Click="btnSSD_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -79,7 +78,7 @@
             </Button>
             <Label x:Name="lbSSSD" Content="SSD" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="539,167,0,0"/>
 
-            <Button x:Name="btnVGA" Margin="38,227,516,199">
+            <Button x:Name="btnVGA" Margin="38,227,516,199" Click="btnVGA_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -93,7 +92,7 @@
             </Button>
             <Label x:Name="lbVGA" Content="VGA" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="59,314,0,0"/>
 
-            <Button x:Name="btnPSU" Margin="156,226,398,199">
+            <Button x:Name="btnPSU" Margin="156,226,398,199" Click="btnPSU_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -107,7 +106,7 @@
             </Button>
             <Label x:Name="lbPSU" Content="PSU" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="175,314,0,0"/>
 
-            <Button x:Name="btnCase" Margin="280,227,274,199">
+            <Button x:Name="btnCase" Margin="280,227,274,199" Click="btnCase_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -121,7 +120,7 @@
             </Button>
             <Label x:Name="lbCase" Content="Case" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="298,314,0,0"/>
 
-            <Button x:Name="btnFanCase" Margin="405,227,149,199">
+            <Button x:Name="btnFanCase" Margin="405,227,149,199" Click="btnFanCase_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -135,7 +134,7 @@
             </Button>
             <Label x:Name="lbFanCase" Content="FanCase" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="411,314,0,0"/>
 
-            <Button x:Name="btnCpuCooler" Margin="517,227,37,198">
+            <Button x:Name="btnCpuCooler" Margin="517,227,37,198" Click="btnCpuCooler_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -149,7 +148,7 @@
             </Button>
             <Label x:Name="lbCpuCooler" Content="CPU Air &#xD;&#xA; Cooler" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="525,316,0,0"/>
 
-            <Button x:Name="btnODD" Margin="38,352,516,74">
+            <Button x:Name="btnODD" Margin="38,352,516,74" Click="btnODD_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -163,7 +162,7 @@
             </Button>
             <Label x:Name="lbODD" Content="ODD" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="55,440,0,0" RenderTransformOrigin="0.571,-0.088"/>
 
-            <Button x:Name="btnSoundCard" Margin="156,352,398,74">
+            <Button x:Name="btnSoundCard" Margin="156,352,398,74" Click="btnSoundCard_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
@@ -176,21 +175,12 @@
                 </StackPanel>
             </Button>
             <Label x:Name="lbSoundCard" Content="Sound Card" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="151,440,0,0" RenderTransformOrigin="0.571,-0.088"/>
-
-            <Button x:Name="btnMonitor" Margin="280,352,274,74">
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <ContentPresenter/>
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-                <StackPanel>
-                    <Image Source="/Image/Monitor.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-            <Label x:Name="lbMonitor" Content="Monitor" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#333333" FontSize="18" Margin="285,440,0,0" RenderTransformOrigin="0.571,-0.088"/>
         </Grid>
 
+        <ScrollViewer x:Name="scrPList" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top" Height="443" Width="618" Margin="10,56,0,0" CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <UniformGrid x:Name="ProductList" Columns="4" VerticalAlignment="Top" />
+        </ScrollViewer>
+
+        <Button Content="Button" HorizontalAlignment="Left" Margin="60,24,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
     </Grid>
 </UserControl>

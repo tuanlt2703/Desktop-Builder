@@ -69,6 +69,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Case.cs" />
+    <Compile Include="Classes\CPU.cs" />
+    <Compile Include="Classes\AirCPUCooler.cs" />
+    <Compile Include="Classes\FanCase.cs" />
+    <Compile Include="Classes\HDD.cs" />
+    <Compile Include="Classes\Mainboard.cs" />
+    <Compile Include="Classes\ODD.cs" />
+    <Compile Include="Classes\ProductList.cs" />
+    <Compile Include="Classes\PSU.cs" />
+    <Compile Include="Classes\RAM.cs" />
+    <Compile Include="Classes\SoundCard.cs" />
+    <Compile Include="Classes\SSD.cs" />
+    <Compile Include="Classes\VGA.cs" />
     <Compile Include="Controls\ComponentsList.xaml.cs">
       <DependentUpon>ComponentsList.xaml</DependentUpon>
     </Compile>
@@ -126,8 +139,9 @@
     <Resource Include="Image\SSD.png" />
     <Resource Include="Image\VGA.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ProductImg\" />
+    <Resource Include="ProductImg\Default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
