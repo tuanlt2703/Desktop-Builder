@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Height="217" Width="160">
-    <Grid>
+    <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
         <Image x:Name="Avatar" VerticalAlignment="Top"  Source="/ProductImg/Default.png" Height="145"/>
         <TextBlock x:Name="tbBriefInfo" Text="Example" HorizontalAlignment="Left" VerticalAlignment="Top" Height="72" Width="160" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Margin="0,145,0,0"/>
     </Grid>

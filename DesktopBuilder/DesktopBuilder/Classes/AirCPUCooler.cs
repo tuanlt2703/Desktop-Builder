@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DesktopBuilder.Classes
 {
-    class AirCPUCooler
+    class AirCPUCooler :Component
     {
         #region Constructor
         public AirCPUCooler()
         {
+            this.setifo();
         }
         #endregion
 
@@ -21,21 +22,27 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
-        public string BriefInfo()
+        public override string BriefInfo()
         {
             string tmp;
             tmp = this._Manufacturer + " " + this._Model
                 + "\nGiá " + this._Price.ToString() + "000 VNĐ";
             return tmp;
         }
+        public override List<Tuple<string, string>> PassDetailData()
+        {
+            List<Tuple<string, string>> DetailData = new List<Tuple<string, string>>();
+            DetailData.Add(Tuple.Create("Manufacturer", _Manufacturer));
+            DetailData.Add(Tuple.Create("Model", _Model));
+            return DetailData;
+        }
         #endregion
 
         #region test
-        public void setifo()
+        private void setifo()
         {
             this._Manufacturer = "Phanteks";
             this._Model = "TC12DX";
-
             this._Price = 1050;
         }
         #endregion

@@ -20,9 +20,27 @@ namespace DesktopBuilder.Controls
     /// </summary>
     public partial class Product : UserControl
     {
-        public Product()
+        #region Constructor
+        public Product(int index, int id, ComponentsList coms)
         {
             InitializeComponent();
+            this.Index = index;
+            this.ID = id;
+            this.coList = coms;
         }
+        #endregion
+
+        #region Properties
+        private ComponentsList coList;
+        private int Index; // indicate this product is which component
+        private int ID; // ID of this product in component list
+        #endregion
+
+        #region Evens
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            coList.ShowProductDetail(this.Index, this.ID);
+        }
+        #endregion
     }
 }

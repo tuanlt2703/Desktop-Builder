@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DesktopBuilder.Classes
 {
-    class ODD
+    class ODD : Component
     {
         #region Constructor
         public ODD()
         {
-
+            this.setifo();
         }
         #endregion
 
@@ -20,12 +20,12 @@ namespace DesktopBuilder.Classes
         private string _Model;
         private string _Type;
         private int _Spd;
-        private string _Interface;
+        private InterfaceType _Interface;
         private int _Price;
         #endregion
 
         #region Methods
-        public string BriefInfo()
+        public override string BriefInfo()
         {
             string tmp;
             tmp = this._Manufacturer + " " + this._Model
@@ -33,16 +33,28 @@ namespace DesktopBuilder.Classes
                 + "\nGiá " + this._Price.ToString() + "000 VNĐ";
             return tmp;
         }
+        public override List<Tuple<string, string>> PassDetailData()
+        {
+            List<Tuple<string, string>> DetailData = new List<Tuple<string, string>>();
+            DetailData.Add(Tuple.Create("Manufacturer", _Manufacturer));
+            DetailData.Add(Tuple.Create("Model", _Model));
+            DetailData.Add(Tuple.Create("Type", _Type));
+            DetailData.Add(Tuple.Create("Speed", _Spd.ToString() + "X"));
+            DetailData.Add(Tuple.Create("Interface", _Interface.ToString()));
+
+            return DetailData;
+        }
         #endregion
 
         #region test
-        public void setifo()
+        private void setifo()
         {
             this._Manufacturer = "Asus";
             this._Model = "24B1ST";
             this._Type = "DVD-RW";
             this._Spd = 24;
-            this._Price = 385   ;
+            this._Interface = InterfaceType.Sata;
+            this._Price = 385;
         }
         #endregion
     }

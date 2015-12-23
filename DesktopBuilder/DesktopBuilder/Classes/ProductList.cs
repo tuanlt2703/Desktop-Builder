@@ -11,23 +11,35 @@ namespace DesktopBuilder.Classes
         #region Constructor
         public ProductList()
         {
-            CreateCPUList();
+            this.CreateCPUList();
+            this.CreateMainboardList();
+            this.CreateRAMList();
+            this.CreateHDDList();
+            this.CreateSSDList();
+            this.CreateVGAList();
+            this.CreatePSUList();
+            this.CreateCaseList();
+            this.CreateFanCaseList();
+            this.CreateAirCPUCoolerList();
+            this.CreateODDList();
+            this.CreateSoundCardList();
         }
         #endregion
-
+       
         #region Properties
-        private ArrayList CPUList = new ArrayList();
-        private ArrayList MainbList = new ArrayList();
-        private ArrayList RAMList = new ArrayList();
-        private ArrayList HDDList = new ArrayList();
-        private ArrayList SSDList = new ArrayList();
-        private ArrayList VGAList = new ArrayList();
-        private ArrayList PSUList = new ArrayList();
-        private ArrayList CaseList = new ArrayList();
-        private ArrayList FanCaseList = new ArrayList();
-        private ArrayList CoolerList = new ArrayList();
-        private ArrayList ODDList = new ArrayList();
-        private ArrayList SoundCardList = new ArrayList();
+        private List<List<Component>> myList = new List<List<Component>>();
+        private List<Component> CPUList = new List<Component>();
+        private List<Component> MainbList = new List<Component>();
+        private List<Component> RAMList = new List<Component>();
+        private List<Component> HDDList = new List<Component>();
+        private List<Component> SSDList = new List<Component>();
+        private List<Component> VGAList = new List<Component>();
+        private List<Component> PSUList = new List<Component>();
+        private List<Component> CaseList = new List<Component>();
+        private List<Component> FanCaseList = new List<Component>();
+        private List<Component> CoolerList = new List<Component>();
+        private List<Component> ODDList = new List<Component>();
+        private List<Component> SoundCardList = new List<Component>();
         #endregion
 
         #region Methods
@@ -35,42 +47,125 @@ namespace DesktopBuilder.Classes
         {
             //load from dtb
             CPU tmp = new CPU();
-            tmp.setifo();
             CPUList.Add(tmp);
             CPUList.Add(tmp);
             CPUList.Add(tmp);
+
+            myList.Add(CPUList);
         }
-        public ArrayList List(int index = 0)
+        private void CreateMainboardList()
         {
-            switch(index)
-            {
-                case 0:
-                    return CPUList;
-                case 1:
-                    return MainbList;
-                case 2:
-                    return RAMList;
-                case 3:
-                    return HDDList;
-                case 4:
-                    return SSDList;
-                case 5:
-                    return VGAList;
-                case 6:
-                    return PSUList;
-                case 7:
-                    return CaseList;
-                case 8:
-                    return FanCaseList;
-                case 9:
-                    return CoolerList;
-                case 10:
-                    return ODDList;
-                case 11:
-                    return SoundCardList;
-                default:
-                    return CPUList;
-            }
+            //load from dtb
+            Mainboard tmp = new Mainboard();
+            MainbList.Add(tmp);
+            MainbList.Add(tmp);
+            MainbList.Add(tmp);
+
+            myList.Add(MainbList);
+        }
+        private void CreateRAMList()
+        {
+            //load from dtb
+            RAM tmp = new RAM();
+            RAMList.Add(tmp);
+            RAMList.Add(tmp);
+            RAMList.Add(tmp);
+
+            myList.Add(RAMList);
+        }
+        private void CreateHDDList()
+        {
+            //load from dtb
+            HDD tmp = new HDD();
+            HDDList.Add(tmp);
+            HDDList.Add(tmp);
+            HDDList.Add(tmp);
+
+            myList.Add(HDDList);
+        }
+        private void CreateSSDList()
+        {
+            //load from dtb
+            SSD tmp = new SSD();
+            SSDList.Add(tmp);
+            SSDList.Add(tmp);
+            SSDList.Add(tmp);
+
+            myList.Add(SSDList);
+        }
+        private void CreateVGAList()
+        {
+            //load from dtb
+            VGA tmp = new VGA();
+            VGAList.Add(tmp);
+            VGAList.Add(tmp);
+            VGAList.Add(tmp);
+
+            myList.Add(VGAList);
+        }
+        private void CreatePSUList()
+        {
+            //load from dtb
+            PSU tmp = new PSU();
+            PSUList.Add(tmp);
+            PSUList.Add(tmp);
+            PSUList.Add(tmp);
+
+            myList.Add(PSUList);
+        }
+        private void CreateCaseList()
+        {
+            //load from dtb
+            Case tmp = new Case();
+            CaseList.Add(tmp);
+            CaseList.Add(tmp);
+            CaseList.Add(tmp);
+
+            myList.Add(CaseList);
+        }
+        private void CreateFanCaseList()
+        {
+            //load from dtb
+            FanCase tmp = new FanCase();
+            FanCaseList.Add(tmp);
+            FanCaseList.Add(tmp);
+            FanCaseList.Add(tmp);
+
+            myList.Add(FanCaseList);
+        }
+        private void CreateAirCPUCoolerList()
+        {
+            //load from dtb
+            AirCPUCooler tmp = new AirCPUCooler();
+            CoolerList.Add(tmp);
+            CoolerList.Add(tmp);
+            CoolerList.Add(tmp);
+
+            myList.Add(CoolerList);
+        }
+        private void CreateODDList()
+        {
+            //load from dtb
+            ODD tmp = new ODD();
+            ODDList.Add(tmp);
+            ODDList.Add(tmp);
+            ODDList.Add(tmp);
+
+            myList.Add(ODDList);
+        }
+        private void CreateSoundCardList()
+        {
+            //load from dtb
+            SoundCard tmp = new SoundCard();
+            SoundCardList.Add(tmp);
+            SoundCardList.Add(tmp);
+            SoundCardList.Add(tmp);
+
+            myList.Add(SoundCardList);
+        }
+        public List<Component> List(int index = 0)
+        {
+            return myList[index];
         }
         #endregion
     }

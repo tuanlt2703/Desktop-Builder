@@ -57,7 +57,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Detail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Product.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProductDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -70,6 +78,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Case.cs" />
+    <Compile Include="Classes\Component.cs" />
     <Compile Include="Classes\CPU.cs" />
     <Compile Include="Classes\AirCPUCooler.cs" />
     <Compile Include="Classes\FanCase.cs" />
@@ -85,8 +94,14 @@
     <Compile Include="Controls\ComponentsList.xaml.cs">
       <DependentUpon>ComponentsList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Detail.xaml.cs">
+      <DependentUpon>Detail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Product.xaml.cs">
       <DependentUpon>Product.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProductDetail.xaml.cs">
+      <DependentUpon>ProductDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -140,10 +155,13 @@
     <Resource Include="Image\VGA.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Image\GoBack.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="ProductImg\Default.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\GoBack.png" />
+    <Resource Include="ProductImg\Default_Detail.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

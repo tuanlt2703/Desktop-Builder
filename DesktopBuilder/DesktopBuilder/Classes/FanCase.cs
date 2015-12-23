@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DesktopBuilder.Classes
 {
-    class FanCase
+    class FanCase : Component
     {
         #region Constructor
         public FanCase()
         {
+            this.setifo();
         }
         #endregion
 
@@ -23,20 +24,31 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
-        public string BriefInfo()
+        public override string BriefInfo()
         {
             string tmp;
             tmp = this._Manufacturer + " " + this._Model + "\n" + this._Spd + "RPM"
                 + "\nGiá " + this._Price.ToString() + "000 VNĐ";
             return tmp;
         }
+        public override List<Tuple<string, string>> PassDetailData()
+        {
+            List<Tuple<string, string>> DetailData = new List<Tuple<string, string>>();
+            DetailData.Add(Tuple.Create("Manufacturer", _Manufacturer));
+            DetailData.Add(Tuple.Create("Model", _Model));
+            DetailData.Add(Tuple.Create("Size", _Size.ToString() + "mm"));
+            DetailData.Add(Tuple.Create("Speed", _Spd.ToString() + "RPM"));
+
+            return DetailData;
+        }
         #endregion
 
         #region test
-        public void setifo()
+        private void setifo()
         {
             this._Manufacturer = "Xigmatek";
             this._Model = "XAF-F1253";
+            this._Size = 120;
             this._Spd = 1500;
             this._Price = 160;
         }

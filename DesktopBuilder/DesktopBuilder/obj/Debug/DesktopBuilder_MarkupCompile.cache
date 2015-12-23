@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\App.xaml
-31696586156
+5-1084860392
 
-20597346293
+231468048016
 12-1401562060
-Controls\ComponentsList.xaml;Controls\Product.xaml;MainWindow.xaml;
+Controls\ComponentsList.xaml;Controls\Detail.xaml;Controls\Product.xaml;Controls\ProductDetail.xaml;MainWindow.xaml;
 
 False
 
