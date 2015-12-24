@@ -57,6 +57,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Customization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DesktopAdvisor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Detail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -93,6 +101,12 @@
     <Compile Include="Classes\VGA.cs" />
     <Compile Include="Controls\ComponentsList.xaml.cs">
       <DependentUpon>ComponentsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Customization.xaml.cs">
+      <DependentUpon>Customization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DesktopAdvisor.xaml.cs">
+      <DependentUpon>DesktopAdvisor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Detail.xaml.cs">
       <DependentUpon>Detail.xaml</DependentUpon>

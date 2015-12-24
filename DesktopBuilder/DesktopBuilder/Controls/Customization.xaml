@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="DesktopBuilder.Controls.Customization"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"  Height="509" Width="638">
+    <Grid>
+        <Label Content="Custom Your Desktop" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="209,10,0,0" FontWeight="Bold" Foreground="#009688" FontSize="24"/>
+        <Label Content="CPU" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,60,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="Mainboard" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,89,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="RAM" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,118,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="VGA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,147,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="HDD 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,176,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="HDD 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,205,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="SSD 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,234,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="SSD 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,263,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="PSU" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,292,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="Case" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,321,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="FanCase" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,350,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="Air CPU Cooler" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,379,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="ODD" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,408,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="Sound Card" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,437,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        
+        <ComboBox x:Name="CPUList"  HorizontalAlignment="Left" Margin="173,60,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="MainboardList" HorizontalAlignment="Left" Margin="173,89,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="RAMList" HorizontalAlignment="Left" Margin="173,118,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="VGAList" HorizontalAlignment="Left" Margin="173,147,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="HDD1_List" HorizontalAlignment="Left" Margin="173,176,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="HDD2_List" HorizontalAlignment="Left" Margin="173,205,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="SSD1_List" HorizontalAlignment="Left" Margin="173,234,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="SSD2_List" HorizontalAlignment="Left" Margin="173,263,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="PSUList" HorizontalAlignment="Left" Margin="173,292,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="CaseList" HorizontalAlignment="Left" Margin="173,321,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="FanCaseList" HorizontalAlignment="Left" Margin="173,350,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="AirCoolerList" HorizontalAlignment="Left" Margin="173,379,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="ODDList" HorizontalAlignment="Left" Margin="173,408,0,0" VerticalAlignment="Top" Width="292"/>
+        <ComboBox x:Name="SoundCardList" HorizontalAlignment="Left" Margin="173,437,0,0" VerticalAlignment="Top" Width="292"/>
+
+        <Button Content="Build!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="255,465,0,0"  Width="93" Height="34" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+    </Grid>
+</UserControl>

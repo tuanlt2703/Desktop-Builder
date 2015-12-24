@@ -20,3 +20,6 @@ C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\Desktop
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\ProductDetail.g.cs
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\Detail.baml
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\Detail.g.cs
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\DesktopBuilder.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\Customization.baml
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\Customization.g.cs

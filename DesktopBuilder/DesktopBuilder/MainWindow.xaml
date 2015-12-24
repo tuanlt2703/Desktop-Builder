@@ -55,7 +55,7 @@
         </Button>
         <Rectangle x:Name="recCustomSelected" Visibility="Hidden" HorizontalAlignment="Left" Height="123" Margin="8,356,0,0" Stroke="#009688" StrokeThickness="2" VerticalAlignment="Top" Width="117"/>
         <Grid x:Name="gridCustom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="641" Height="510" Margin="138,0,0,0" Visibility="Hidden">
-            <TextBlock Text="this page let you custom your pc"/>
+            <Controls:Customization HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </Grid>
 
         <Rectangle HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="#00B0F0" StrokeThickness="5" Height="511" Width="4" Margin="134,0,0,0"/>
