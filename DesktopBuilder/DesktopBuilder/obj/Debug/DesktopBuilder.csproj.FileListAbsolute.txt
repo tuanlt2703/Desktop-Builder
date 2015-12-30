@@ -23,3 +23,9 @@ C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\Desktop
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\DesktopBuilder.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\Customization.baml
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\Customization.g.cs
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\DesktopAdvisor.baml
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\DesktopAdvisor.g.cs
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\bin\Debug\System.Data.SQLite.dll
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\bin\Debug\System.Data.SQLite.xml
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\DatabaseView.baml
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\DatabaseView.g.cs

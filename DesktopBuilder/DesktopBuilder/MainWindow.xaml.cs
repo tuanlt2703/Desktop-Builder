@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Data.SQLite;
 namespace DesktopBuilder
 {
     /// <summary>
@@ -51,6 +51,10 @@ namespace DesktopBuilder
         {
             Alternate(2);
         }
+        private void OpenDtb_Click(object sender, RoutedEventArgs e)
+        {
+            gridDtb.Visibility = Visibility.Visible;
+        }
         #endregion
 
         #region Methods
@@ -67,5 +71,7 @@ namespace DesktopBuilder
             }
         }
         #endregion
+
+        
     }
 }
