@@ -30,6 +30,8 @@ namespace DesktopBuilder
             gridSelected.Add(gridComponents);
             gridSelected.Add(gridAdvisor);
             gridSelected.Add(gridCustom);
+
+            this.Custom.Main = this;
         }
         #endregion
 
@@ -53,6 +55,11 @@ namespace DesktopBuilder
         }
         private void OpenDtb_Click(object sender, RoutedEventArgs e)
         {
+            for (int i = 0; i < 3; i++)
+            {
+                recSelected[i].Visibility = Visibility.Hidden;
+                gridSelected[i].Visibility = Visibility.Hidden;
+            }
             gridDtb.Visibility = Visibility.Visible;
         }
         #endregion
@@ -60,6 +67,7 @@ namespace DesktopBuilder
         #region Methods
         private void Alternate(int index)
         {
+            gridDtb.Visibility = Visibility.Hidden;
             recSelected[index].Visibility = Visibility.Visible;
             gridSelected[index].Visibility = Visibility.Visible;
             int tmp = index + 1;

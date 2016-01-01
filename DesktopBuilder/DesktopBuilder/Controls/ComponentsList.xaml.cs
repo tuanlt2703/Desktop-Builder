@@ -30,7 +30,8 @@ namespace DesktopBuilder.Controls
 
         #region Properties
         private bool _On2nd;
-        private ProductList productList = new ProductList();     
+        private ProductList productList = new ProductList();
+        public ProductList pList { get { return productList; } }
         #endregion
 
         #region Events
@@ -103,6 +104,7 @@ namespace DesktopBuilder.Controls
                 gridComList.Visibility = Visibility.Visible; // show components list
 
                 btnBackWard.Visibility = Visibility.Hidden; // hide back button
+                lbPageTitle.Content = "Hardware Components";
             }
             else
             {
@@ -154,19 +156,6 @@ namespace DesktopBuilder.Controls
             _On2nd = false;
             scrPList.Visibility = Visibility.Hidden; // hide selected component product list
             ProductDetail.Visibility = Visibility.Visible; // show selected product detail
-        }
-        #endregion
-
-        #region ForTesting
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            List<Tuple<string, string>> tmp = new List<Tuple<string, string>>();
-            tmp.Add(Tuple.Create("test", "testinfo"));
-            
-            foreach(var item in tmp)
-            {
-                MessageBox.Show(item.Item1);
-            }
         }
         #endregion
     }

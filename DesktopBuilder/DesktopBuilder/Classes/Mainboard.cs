@@ -6,74 +6,54 @@ using System.Threading.Tasks;
 
 namespace DesktopBuilder.Classes
 {
-    enum MainbSize : byte { MicroATX, ATX}
-    enum InterfaceType : byte { Sata, Sata3, PCI, PCIx16, PCIx1}
     class Mainboard : Component
     {
         #region Constructor
         public Mainboard()
         {
-            this.setifo();
+            
         }
         #endregion
 
         #region Properties
-        private string _Manufacturer;
-        private string _Model;
-        private string _Chipet;
-        private MainbSize _Size;
-        private SocketType _Socket;
-        private RamType _memType;
-        private int _memSlot;
-        private int _StoreInterface;
-        private int _PCI;
-        private int _PCIx16; // PCI-Ex16
-        private int _PCIx1;  // PCI-Ex1
-        private int _Price;
+        public string Manufacturer { get; set; }
+        public string Model { get; set; }
+        public string Chipet { get; set; }
+        public int Size { get; set; }
+        public int Socket { get; set; }
+        public int memType { get; set; }
+        public int memSlot { get; set; }
+        public int StoreInterface { get; set; }
+        public int PCI { get; set; }
+        public int PCIx16 { get; set; } // PCI-Ex16
+        public int PCIx1 { get; set; }  // PCI-Ex1
+        public int Price { get; set; }
         #endregion
 
         #region Methods
         public override string BriefInfo()
         {
             string ifo;
-            ifo = this._Manufacturer + " " + this._Model + " - " + this._Socket.ToString().Substring(1)
-                + "\n Giá: " + this._Price.ToString() + "000 VNĐ";
+            ifo = this.Manufacturer + " " + this.Model + " - " + cList.Socket[this.Socket]
+                + "\n Giá: " + this.Price.ToString() + "000 VNĐ";
             return ifo;
         }
         public override List<Tuple<string, string>> PassDetailData()
         {
             List<Tuple<string, string>> DetailData = new List<Tuple<string, string>>();
-            DetailData.Add(Tuple.Create("Manufacturer", _Manufacturer));
-            DetailData.Add(Tuple.Create("Model", _Model));
-            //DetailData.Add(Tuple.Create("Chipset", _Chipet));
-            DetailData.Add(Tuple.Create("Size", _Size.ToString()));
-            DetailData.Add(Tuple.Create("Socket", _Socket.ToString().Substring(1)));
-            DetailData.Add(Tuple.Create("Support Ram Type", _memType.ToString()));
-            DetailData.Add(Tuple.Create("Ram slot", _memSlot.ToString()));
-            DetailData.Add(Tuple.Create("Store Interface", _StoreInterface.ToString()));
-            DetailData.Add(Tuple.Create("PCI-Express x16", _PCIx16.ToString()));
-            DetailData.Add(Tuple.Create("PCI-Express x1", _PCIx1.ToString()));
-            DetailData.Add(Tuple.Create("PCI", _PCI.ToString()));
+            DetailData.Add(Tuple.Create("Manufacturer", Manufacturer));
+            DetailData.Add(Tuple.Create("Model", Model));
+            //DetailData.Add(Tuple.Create("Chipset", Chipet));
+            DetailData.Add(Tuple.Create("Size", cList.mbSize[this.Size])); //
+            DetailData.Add(Tuple.Create("Socket", cList.Socket[this.Socket])); //
+            DetailData.Add(Tuple.Create("Support Ram Type", cList.RAMType[this.memType])); //
+            DetailData.Add(Tuple.Create("Ram slot", memSlot.ToString()));
+            DetailData.Add(Tuple.Create("Store Interface", StoreInterface.ToString()));
+            DetailData.Add(Tuple.Create("PCI-Express x16", PCIx16.ToString()));
+            DetailData.Add(Tuple.Create("PCI-Express x1", PCIx1.ToString()));
+            DetailData.Add(Tuple.Create("PCI", PCI.ToString()));
 
             return DetailData;
-        }
-        #endregion
-
-        #region testing
-        private void setifo()
-        {
-            this._Manufacturer = "Gigabyte";
-            this._Model = "B85M - Gaming 3";
-            this._Chipet = "Intel B85";
-            this._Size = MainbSize.MicroATX;
-            this._Socket = SocketType._1150;
-            this._memType = RamType.DDR3;
-            this._memSlot = 2;
-            this._StoreInterface = 6;
-            this._PCI = 0;
-            this._PCIx16 = 1;
-            this._PCIx1 = 2;
-            this._Price = 1556;
         }
         #endregion
     }

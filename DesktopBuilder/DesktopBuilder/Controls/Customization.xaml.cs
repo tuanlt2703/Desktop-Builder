@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SQLite;
 
 namespace DesktopBuilder.Controls
 {
@@ -38,13 +39,13 @@ namespace DesktopBuilder.Controls
             cbList.Add(AirCoolerList);
             cbList.Add(ODDList);
             cbList.Add(SoundCardList);
-
-            test();
+            InitCb();
         }
         #endregion
 
         #region Properties
         private List<ComboBox> cbList = new List<ComboBox>();
+        public MainWindow Main { get; set; }
         #endregion
 
         #region Events
@@ -67,12 +68,14 @@ namespace DesktopBuilder.Controls
                 return false;
             return true;
         }
-        #endregion
-
-        private void test()
+        private void InitCb()
         {
             for (int i = 0; i < cbList.Count; i++)
-                cbList[i].Items.Add("test" + i.ToString());
+            {
+                cbList[i].Items.Add("[---------------------------------------]");
+                cbList[i].SelectedIndex = 0;
+            }
         }
+        #endregion
     }
 }

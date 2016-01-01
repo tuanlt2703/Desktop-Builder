@@ -28,7 +28,7 @@ namespace DesktopBuilder.Controls
             
             //SQLiteConnection.CreateFile("Hardwares.db"); // create empty database
             dbCon = new SQLiteConnection("Data Source=Hardwares.db;Version=3;"); // connect to database
-
+            //CreateDatabase();
             CreateTablelist();
         }
         #endregion
@@ -57,7 +57,7 @@ namespace DesktopBuilder.Controls
             string tbInterfaceType = "CREATE TABLE InterfaceType (ID INTEGER PRIMARY KEY NOT NULL, Type nvarchar(10) NOT NULL UNIQUE )";
 
             string tbCPU = "CREATE TABLE CPU (ID INTEGER PRIMARY KEY NOT NULL, Manufacturer nvarchar(20) NOT NULL, Processor nvarchar(20) NOT NULL, " +
-                "Gen INTEGER NOT NULL, Frequency DOUBLE NOT NULL, Socket INTEGER NOT NULL, Cache INTEGER NOT NULL , " +
+                "Gen nvarchar(20) NOT NULL, Frequency DOUBLE NOT NULL, Socket INTEGER NOT NULL, Cache INTEGER NOT NULL , " +
                 "Cores INTEGER NOT NULL, Threads INTEGER NOT NULL, Unlocked BOOL NOT NULL, Price INTEGER NOT NULL," +
                 "FOREIGN KEY (Socket) REFERENCES SocketType(ID))";
 
@@ -97,7 +97,7 @@ namespace DesktopBuilder.Controls
                 "Type nvarchar(10) NOT NULL, Spd INTEGER NOT NULL, Interface INTEGER NOT NULL, Price INTEGER NOT NULL)";
 
             string tbSoundCard = "CREATE TABLE SoundCard (ID INTEGER PRIMARY KEY NOT NULL, Manufacturer nvarchar(20) NOT NULL, Model nvarchar(20) NOT NULL, " +
-                "Channels nvarchat(10) NOT NULL, SampleRate INTEGER NOT NULL, DigitalAudio INTEGER NOT NULL, Interface INTEGER NOT NULL, Price INTEGER NOT NULL, " +
+                "Channels nvarchar(10) NOT NULL, SampleRate INTEGER NOT NULL, DigitalAudio INTEGER NOT NULL, Interface INTEGER NOT NULL, Price INTEGER NOT NULL, " +
                 "FOREIGN KEY (Interface) REFERENCES InterfaceType(ID))";
 
             List<string> strtmp = new List<string>(17);
@@ -414,6 +414,11 @@ namespace DesktopBuilder.Controls
             try
             {
                 dbAdapter.Update((dtgrid.ItemsSource as DataView).Table);
+                LoadSocketList();
+                LoadmbSizeList();
+                LoadRAMList();
+                LoadVGAmTypeList();
+                LoadInterfaceTypeList();
             }
             catch (Exception err)
             {
@@ -421,9 +426,6 @@ namespace DesktopBuilder.Controls
             }
         }
         
-        #endregion
-
-        
-        
+        #endregion      
     }
 }

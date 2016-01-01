@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesktopBuilder.Classes
 {
-    abstract class Component
+    public abstract class Component
     {
         #region Properties
         private string _Manufacturer;
