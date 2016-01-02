@@ -30,8 +30,8 @@ namespace DesktopBuilder.Controls
 
         #region Properties
         private bool _On2nd;
-        private ProductList productList = new ProductList();
-        public ProductList pList { get { return productList; } }
+        public MainWindow Main { get; set; }
+
         #endregion
 
         #region Events
@@ -126,10 +126,10 @@ namespace DesktopBuilder.Controls
 
             ///////////update selected product list  //////////
             ProductList.Children.Clear(); // clear old product list
-            for (int i = 0; i < productList.List(index).Count; i++)
+            for (int i = 0; i < Main.pList.List(index).Count; i++)
             {
                 Product show = new Product(index, i, this);
-                show.tbBriefInfo.Text = productList.List(index)[i].BriefInfo();
+                show.tbBriefInfo.Text = Main.pList.List(index)[i].BriefInfo();
                 //show.avatar.Source = new BitmapImage(new Uri( "CoverPath" , UriKind.Relative));
 
                 ProductList.Children.Add(show);
@@ -140,7 +140,7 @@ namespace DesktopBuilder.Controls
             //CPU cp = (CPU)productList.List(0)[0];
             //List<Tuple<string, string>> tmp = cp.PassDetailData();
 
-            List<Tuple<string, string>> tmp = productList.List(Index)[ID].PassDetailData();
+            List<Tuple<string, string>> tmp = Main.pList.List(Index)[ID].PassDetailData();
 
             //clear last selected product detail
             ProductDetail.Details.Children.Clear();

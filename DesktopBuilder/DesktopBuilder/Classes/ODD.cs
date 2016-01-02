@@ -25,6 +25,13 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
+        public override string Info()
+        {
+            string tmp;
+            tmp = this.Manufacturer + " " + this.Model
+                + " " + this.Type + " " + this.Spd.ToString() + "X";
+            return tmp;
+        }
         public override string BriefInfo()
         {
             string tmp;

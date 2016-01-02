@@ -5,37 +5,56 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"  Height="509" Width="638">
     <Grid>
-        <Label Content="Custom Your Desktop" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="209,10,0,0" FontWeight="Bold" Foreground="#009688" FontSize="24"/>
+        <Label Content="Custom Your Desktop" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="194,10,0,0" FontWeight="Bold" Foreground="#009688" FontSize="24"/>
+        <Image x:Name="imgComplete" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/Image/Mark.png" Height="51" Width="52" Margin="40,9,0,0" Visibility="Hidden"/>
+        
+        <Label Content="Price (VNĐ)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="475,29,0,0" FontWeight="Bold" Foreground="#009688" FontSize="17"/>
         <Label Content="CPU" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,60,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
         <Label Content="Mainboard" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,89,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
         <Label Content="RAM" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,118,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
-        <Label Content="VGA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,147,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
-        <Label Content="HDD 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,176,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
-        <Label Content="HDD 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,205,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
-        <Label Content="SSD 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,234,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
-        <Label Content="SSD 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,263,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="VGA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,265,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="HDD 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,148,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="HDD 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,177,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="SSD 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,206,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <Label Content="SSD 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,235,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
         <Label Content="PSU" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,292,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
         <Label Content="Case" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,321,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
         <Label Content="FanCase" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,350,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
         <Label Content="Air CPU Cooler" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,379,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
         <Label Content="ODD" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,408,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
         <Label Content="Sound Card" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,437,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
-        
-        <ComboBox x:Name="CPUList"  HorizontalAlignment="Left" Margin="173,60,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="MainboardList" HorizontalAlignment="Left" Margin="173,89,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="RAMList" HorizontalAlignment="Left" Margin="173,118,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="VGAList" HorizontalAlignment="Left" Margin="173,147,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="HDD1_List" HorizontalAlignment="Left" Margin="173,176,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="HDD2_List" HorizontalAlignment="Left" Margin="173,205,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="SSD1_List" HorizontalAlignment="Left" Margin="173,234,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="SSD2_List" HorizontalAlignment="Left" Margin="173,263,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="PSUList" HorizontalAlignment="Left" Margin="173,292,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="CaseList" HorizontalAlignment="Left" Margin="173,321,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="FanCaseList" HorizontalAlignment="Left" Margin="173,350,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="AirCoolerList" HorizontalAlignment="Left" Margin="173,379,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="ODDList" HorizontalAlignment="Left" Margin="173,408,0,0" VerticalAlignment="Top" Width="292"/>
-        <ComboBox x:Name="SoundCardList" HorizontalAlignment="Left" Margin="173,437,0,0" VerticalAlignment="Top" Width="292"/>
 
-        <Button Content="Build!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="255,465,0,0"  Width="93" Height="34" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+        <ComboBox x:Name="CPUList"  HorizontalAlignment="Left" Margin="173,60,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="CPUList_DropDownClosed"/>
+        <ComboBox x:Name="MainboardList" HorizontalAlignment="Left" Margin="173,89,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="MainboardList_DropDownClosed"/>
+        <ComboBox x:Name="RAMList" HorizontalAlignment="Left" Margin="173,118,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="RAMList_DropDownClosed"/>
+        <ComboBox x:Name="VGAList" HorizontalAlignment="Left" Margin="173,265,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="VGAList_DropDownClosed"/>
+        <ComboBox x:Name="HDD1_List" HorizontalAlignment="Left" Margin="173,148,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="HDD1_List_DropDownClosed"/>
+        <ComboBox x:Name="HDD2_List" HorizontalAlignment="Left" Margin="173,177,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="HDD2_List_DropDownClosed"/>
+        <ComboBox x:Name="SSD1_List" HorizontalAlignment="Left" Margin="173,206,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="SSD1_List_DropDownClosed"/>
+        <ComboBox x:Name="SSD2_List" HorizontalAlignment="Left" Margin="173,235,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="SSD2_List_DropDownClosed"/>
+        <ComboBox x:Name="PSUList" HorizontalAlignment="Left" Margin="173,292,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="PSUList_DropDownClosed"/>
+        <ComboBox x:Name="CaseList" HorizontalAlignment="Left" Margin="173,321,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="CaseList_DropDownClosed"/>
+        <ComboBox x:Name="FanCaseList" HorizontalAlignment="Left" Margin="173,350,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="FanCaseList_DropDownClosed"/>
+        <ComboBox x:Name="AirCoolerList" HorizontalAlignment="Left" Margin="173,379,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="AirCoolerList_DropDownClosed"/>
+        <ComboBox x:Name="ODDList" HorizontalAlignment="Left" Margin="173,408,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="ODDList_DropDownClosed"/>
+        <ComboBox x:Name="SoundCardList" HorizontalAlignment="Left" Margin="173,437,0,0" VerticalAlignment="Top" Width="292" DropDownClosed="SoundCardList_DropDownClosed"/>
+      
+        <TextBlock x:Name="tbCPUPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,60,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbMainbPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,89,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbRAMPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,118,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbHDD1Price" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,148,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbHDD2Price" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,177,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbSSD1Price" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,206,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbSSD2Price" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,235,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbVGAPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,265,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbPSUPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,292,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbCasePrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,321,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbFanCasePrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,350,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbAirCoolerPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,379,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbODDPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,408,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+        <TextBlock x:Name="tbSCPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="484,437,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
+
+        <Button x:Name="btnBuild" Content="Build!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="276,465,0,0" Width="93" Height="34" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+        <Button x:Name="btnRS" Content="Reset All" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,465,0,0" Width="93" Height="34" FontSize="20" FontWeight="Bold" Click="Button_Click_1" Visibility="Hidden"/>
     </Grid>
 </UserControl>

@@ -31,6 +31,13 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
+        public override string Info()
+        {
+            string tmp;
+            tmp = this.Manufacturer + " " + this.GPU + " " + this.memSize.ToString() + "Gb (" + this.memInterface + " bit) - "
+                 + cList.VGAm[this.memType]; 
+            return tmp;
+        }
         public override string BriefInfo()
         {
             string tmp;

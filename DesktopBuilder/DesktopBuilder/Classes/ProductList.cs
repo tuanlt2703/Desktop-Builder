@@ -532,6 +532,11 @@ namespace DesktopBuilder.Classes
         {
             return myList[index];
         }
+        public ProductList Clone()
+        {
+            ProductList tmp = new ProductList();
+            return tmp;
+        }
         #endregion
     }
 }

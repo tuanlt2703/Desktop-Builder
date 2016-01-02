@@ -23,6 +23,18 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
+        public override string Info()
+        {
+            string tmpcap;
+            if (this.Capacity > 1000)
+                tmpcap = (this.Capacity / 1000).ToString() + "TB";
+            else
+                tmpcap = this.Capacity.ToString() + "GB";
+
+            string tmp;
+            tmp = this.Manufacturer + " " + tmpcap + " ";
+            return tmp;
+        }
         public override string BriefInfo()
         {
             string tmpcap;

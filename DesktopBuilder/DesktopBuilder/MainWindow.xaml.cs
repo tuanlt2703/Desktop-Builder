@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SQLite;
+using DesktopBuilder.Classes;
+
 namespace DesktopBuilder
 {
     /// <summary>
@@ -31,13 +33,17 @@ namespace DesktopBuilder
             gridSelected.Add(gridAdvisor);
             gridSelected.Add(gridCustom);
 
+            this.compoList.Main = this;
             this.Custom.Main = this;
+            this.Custom.InitCb();
         }
         #endregion
 
         #region Properties
         private List<Rectangle> recSelected = new List<Rectangle>();
         private List<Grid> gridSelected = new List<Grid>();
+        private ProductList productList = new ProductList();
+        public ProductList pList { get { return productList; } }
         #endregion
 
         #region Events
@@ -78,8 +84,6 @@ namespace DesktopBuilder
                 tmp++;
             }
         }
-        #endregion
-
-        
+        #endregion    
     }
 }

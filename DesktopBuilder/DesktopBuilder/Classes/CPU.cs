@@ -28,6 +28,13 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
+        public override string Info()
+        {
+            string ifo;
+            ifo = this.Manufacturer + " " + this.Processor + " " + this.Frequency.ToString() + "GHz - Socket "
+                + cList.Socket[this.Socket] + (this.Unlocked ? " - Unlocked" : "");
+            return ifo;
+        }
         public override string BriefInfo()
         {
             string ifo;

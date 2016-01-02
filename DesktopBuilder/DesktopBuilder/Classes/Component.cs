@@ -13,6 +13,7 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
+        public abstract string Info();
         public abstract string BriefInfo();
         public abstract List<Tuple<string, string>> PassDetailData();
         #endregion

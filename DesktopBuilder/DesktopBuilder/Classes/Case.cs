@@ -24,6 +24,12 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
+        public override string Info()
+        {
+            string tmp;
+            tmp = this.Manufacturer + " " + this.Model + " " + cList.mbSize[this.Size];
+            return tmp;
+        }
         public override string BriefInfo()
         {
             string tmp;

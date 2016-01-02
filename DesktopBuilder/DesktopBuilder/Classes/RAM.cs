@@ -24,6 +24,13 @@ namespace DesktopBuilder.Classes
         #endregion
 
         #region Methods
+        public override string Info()
+        {
+            string ifo;
+            ifo = this.Manufacturer + " - " + this.Capacity.ToString() + "Gb - bus" + this.Bus.ToString()
+                + " - " + cList.RAMType[this.memType];
+            return ifo;
+        }
         public override string BriefInfo()
         {
             string ifo;
