@@ -41,7 +41,7 @@ namespace DesktopBuilder.Classes
         {
             string ifo;
             ifo = this.Manufacturer + " " + this.Model + " - " + cList.Socket[this.Socket]
-                + "\n Giá: " + this.Price.ToString() + "000 VNĐ";
+                + "\n Giá: " + base.PricetoStr(Price);
             return ifo;
         }
         public override List<Tuple<string, string>> PassDetailData()
@@ -58,6 +58,7 @@ namespace DesktopBuilder.Classes
             DetailData.Add(Tuple.Create("PCI-Express x16", PCIx16.ToString()));
             DetailData.Add(Tuple.Create("PCI-Express x1", PCIx1.ToString()));
             DetailData.Add(Tuple.Create("PCI", PCI.ToString()));
+            DetailData.Add(Tuple.Create("Price", base.PricetoStr(Price)));
 
             return DetailData;
         }

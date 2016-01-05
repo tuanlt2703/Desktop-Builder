@@ -5,6 +5,63 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Height="509" Width="638">
     <Grid>
-        <Label Content="Desktop Advisor" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="209,10,0,0" FontWeight="Bold" Foreground="#2F5E73" FontSize="24"/>
+        <Label Content="Desktop Advisor" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="223,10,0,0" FontWeight="Bold" Foreground="#2F5E73" FontSize="24"/>
+        
+        <Grid x:Name="step1" Visibility="Visible">
+            <Label Content="Amount of money you can afford:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,142,0,0" Foreground="#2F5E73" FontSize="24"/>
+            <TextBox x:Name="tbCash" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,201,0,0" Height="27" Width="159" TextAlignment="Right" PreviewTextInput="TextBox_PreviewTextInput" PreviewKeyDown="TextBox_PreviewKeyDown"/>
+            <Label Content="VNĐ" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="379,194,0,0" Foreground="#2F5E73" FontSize="20"/>
+            <Label x:Name="lbWarnning" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="236,176,0,0" Foreground="Red" Content="Only numeric allowed" Visibility="Hidden"/>
+        </Grid>
+
+        <Grid x:Name="step2" Visibility="Hidden">
+            <Label Content="Your Desktop PC Requirement" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="142,96,0,0" Foreground="#2F5E73" FontSize="24"/>
+            <RadioButton x:Name="btnGame" Content="Gaming" HorizontalAlignment="Left" Margin="181,242,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="22"/>
+            <RadioButton x:Name="btnDesign" Content="Designing (Pts, 3D...)" HorizontalAlignment="Left" Margin="181,140,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="22"/>
+            <RadioButton x:Name="btnEncode" Content="Encoding (Films, Images....)" HorizontalAlignment="Left" Margin="181,174,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="22"/>
+            <RadioButton x:Name="btnCommon" Content="Office (word, excel...)/ Common uses" HorizontalAlignment="Left" Margin="181,208,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="22"/>
+        </Grid>
+
+        <Grid x:Name="step3" Visibility="Hidden">
+            <Label Content="Extra hardware?" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="225,106,0,0" Foreground="#2F5E73" FontSize="24"/>
+            <CheckBox x:Name="cbCPU" IsChecked="True" IsEnabled="False" Content="CPU" HorizontalAlignment="Left" Margin="175,154,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbMain" IsChecked="True" IsEnabled="False" Content="Mainboard" HorizontalAlignment="Left" Margin="175,183,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbRAM" IsChecked="True" IsEnabled="False" Content="RAM" HorizontalAlignment="Left" Margin="175,212,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbHDD" IsChecked="True" IsEnabled="False" Content="HDD" HorizontalAlignment="Left" Margin="175,241,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbVGA" Content="VGA" HorizontalAlignment="Left" Margin="175,270,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbCase" Content="Case" HorizontalAlignment="Left" Margin="293,154,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbPSU" Content="PSU" HorizontalAlignment="Left" Margin="293,183,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbODD" Content="ODD" HorizontalAlignment="Left" Margin="293,247,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbSSD" Content="SSD" HorizontalAlignment="Left" Margin="293,215,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbFan" Content="Fan Case" HorizontalAlignment="Left" Margin="362,154,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbAirCooler" Content="Air Cooler" HorizontalAlignment="Left" Margin="362,183,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <CheckBox x:Name="cbSC" Content="Sound Card" HorizontalAlignment="Left" Margin="362,212,0,0" VerticalAlignment="Top" Foreground="#2F5E73" FontSize="20"/>
+            <Button Content="Build!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="277,324,0,0" FontWeight="Bold" FontSize="20" Height="34" Width="93" Click="Button_Click"/>
+        </Grid>
+
+        <Button x:Name="btnNext" Margin="558,432,10,10" Click="btnNext_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <ContentPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <StackPanel>
+                <Image Source="/Image/Next.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="69" Width="67"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnPre" Margin="10,432,558,10" Click="btnPre_Click" Visibility="Hidden">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <ContentPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <StackPanel>
+                <Image Source="/Image/Pre.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="69" Width="67"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

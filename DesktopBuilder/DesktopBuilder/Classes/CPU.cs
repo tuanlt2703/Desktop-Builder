@@ -40,7 +40,7 @@ namespace DesktopBuilder.Classes
             string ifo;
             ifo = this.Manufacturer + " " + this.Processor + "\n" + this.Frequency.ToString() + "GHz - "
                 + cList.Socket[this.Socket]
-                + "\n Giá: " + this.Price.ToString() + "000 VNĐ";
+                + "\n Giá: " + base.PricetoStr(Price);
             return ifo;
         }
         public override List<Tuple<string, string>> PassDetailData()
@@ -56,6 +56,7 @@ namespace DesktopBuilder.Classes
             DetailData.Add(Tuple.Create("Num of Cores", Cores.ToString()));
             DetailData.Add(Tuple.Create("Num of Threads", Threads.ToString()));
             DetailData.Add(Tuple.Create("Unlocked", Unlocked.ToString()));
+            DetailData.Add(Tuple.Create("Price", base.PricetoStr(Price)));
 
             return DetailData;
         }

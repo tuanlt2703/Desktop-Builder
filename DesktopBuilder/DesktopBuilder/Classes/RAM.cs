@@ -35,7 +35,7 @@ namespace DesktopBuilder.Classes
         {
             string ifo;
             ifo = this.Manufacturer + " - " + this.Capacity.ToString() +"Gb\n bus" + this.Bus.ToString()
-                + " - " + cList.RAMType[this.memType] + "\n Giá: " + this.Price.ToString() + "000 VNĐ";
+                + " - " + cList.RAMType[this.memType] + "\n Giá: " + base.PricetoStr(Price);
             return ifo;
         }
         public override List<Tuple<string, string>> PassDetailData()
@@ -45,6 +45,7 @@ namespace DesktopBuilder.Classes
             DetailData.Add(Tuple.Create("Capacity", Capacity.ToString() + "Gb"));
             DetailData.Add(Tuple.Create("Bus", Bus.ToString() + "Mhz"));
             DetailData.Add(Tuple.Create("RAM type", cList.RAMType[this.memType]));
+            DetailData.Add(Tuple.Create("Price", base.PricetoStr(Price)));
 
             return DetailData;
         }

@@ -92,6 +92,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Builder.cs" />
     <Compile Include="Classes\Case.cs" />
     <Compile Include="Classes\Component.cs" />
     <Compile Include="Classes\CPU.cs" />
@@ -186,6 +187,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ProductImg\Default_Detail.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Next.png" />
+    <Resource Include="Image\Pre.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

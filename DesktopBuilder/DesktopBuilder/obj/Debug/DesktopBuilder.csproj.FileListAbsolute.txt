@@ -28,3 +28,4 @@ C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\Desktop
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\bin\Debug\System.Data.SQLite.xml
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\DatabaseView.baml
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\DatabaseView.g.cs
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\DesktopBuilder.csprojResolveAssemblyReference.cache

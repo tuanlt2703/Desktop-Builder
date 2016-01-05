@@ -45,7 +45,7 @@ namespace DesktopBuilder.Classes
 
             string tmp;
             tmp = this.Manufacturer + " " + tmpcap + " "
-                + "\nGiá " + this.Price.ToString() + "000 VNĐ";
+                + "\nGiá " + base.PricetoStr(Price);
             return tmp;
         }
         public override List<Tuple<string, string>> PassDetailData()
@@ -60,6 +60,7 @@ namespace DesktopBuilder.Classes
             DetailData.Add(Tuple.Create("Manufacturer", Manufacturer));
             DetailData.Add(Tuple.Create("Capacity", tmpcap));
             DetailData.Add(Tuple.Create("Interface", cList.Interface[this.Interface]));
+            DetailData.Add(Tuple.Create("Price", base.PricetoStr(Price)));
 
             return DetailData;
         }

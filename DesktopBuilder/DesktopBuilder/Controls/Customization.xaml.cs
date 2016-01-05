@@ -371,9 +371,9 @@ namespace DesktopBuilder.Controls
 
                 //Update price of selected CPU
                 int price = (Main.pList.List(0)[selectedCPU] as CPU).Price; // 0 = CPUList's index
-                if (price > 10000)
+                if (price >= 10000)
                     SetTbText(tbCPUPrice, price.ToString().Insert(2, ".") + ".000");
-                else if (price > 1000)
+                else if (price >= 1000)
                     SetTbText(tbCPUPrice, price.ToString().Insert(1, ".") + ".000");
                 else
                     SetTbText(tbCPUPrice, price.ToString() + ".000");
@@ -695,8 +695,6 @@ namespace DesktopBuilder.Controls
             errList.Add(false); // 2 = Mainboard - Case error
             errList.Add(false); // 3 = VGA - PSU error
         }
-        #endregion     
-
-        
+        #endregion            
     }
 }

@@ -37,7 +37,7 @@ namespace DesktopBuilder.Classes
             string tmp;
             tmp = this.Manufacturer + " " + this.Model
                 + "\n" + this.Type + " " + this.Spd.ToString() + "X"
-                + "\nGiá " + this.Price.ToString() + "000 VNĐ";
+                + "\nGiá " + base.PricetoStr(Price);
             return tmp;
         }
         public override List<Tuple<string, string>> PassDetailData()
@@ -48,6 +48,7 @@ namespace DesktopBuilder.Classes
             DetailData.Add(Tuple.Create("Type", Type));
             DetailData.Add(Tuple.Create("Speed", Spd.ToString() + "X"));
             DetailData.Add(Tuple.Create("Interface", cList.Interface[this.Interface]));
+            DetailData.Add(Tuple.Create("Price", base.PricetoStr(Price)));
 
             return DetailData;
         }

@@ -32,7 +32,7 @@ namespace DesktopBuilder.Classes
         {
             string tmp;
             tmp = this.Manufacturer + " " + this.Model
-                + "\nGiá " + this.Price.ToString() + "000 VNĐ";
+                + "\nGiá " + base.PricetoStr(Price);
             return tmp;
         }
         public override List<Tuple<string, string>> PassDetailData()
@@ -40,6 +40,7 @@ namespace DesktopBuilder.Classes
             List<Tuple<string, string>> DetailData = new List<Tuple<string, string>>();
             DetailData.Add(Tuple.Create("Manufacturer", Manufacturer));
             DetailData.Add(Tuple.Create("Model", Model));
+            DetailData.Add(Tuple.Create("Price", base.PricetoStr(Price)));
             return DetailData;
         }
         #endregion

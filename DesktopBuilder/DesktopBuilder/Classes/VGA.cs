@@ -42,7 +42,7 @@ namespace DesktopBuilder.Classes
         {
             string tmp;
             tmp = this.Manufacturer + " " + this.GPU + "\n" + this.memSize.ToString() + "Gb (" + this.memInterface + " bit) - "
-                 + cList.VGAm[this.memType] + "\nGiá " + this.Price.ToString() + "000 VNĐ";
+                 + cList.VGAm[this.memType] + "\nGiá " + base.PricetoStr(Price);
             return tmp;
         }
         public override List<Tuple<string, string>> PassDetailData()
@@ -57,8 +57,10 @@ namespace DesktopBuilder.Classes
             DetailData.Add(Tuple.Create("Memory Interface", memInterface.ToString() + "bits"));
             DetailData.Add(Tuple.Create("Power Required", PowReq.ToString() + "W"));
             DetailData.Add(Tuple.Create("Interface", cList.Interface[this.Interface])); //
+            DetailData.Add(Tuple.Create("Price", base.PricetoStr(Price)));
             //DetailData.Add(Tuple.Create("8 pin", 8pin.ToString()));
             //DetailData.Add(Tuple.Create("6 pin", 6pin.ToString()));
+
             return DetailData;
         }
         #endregion

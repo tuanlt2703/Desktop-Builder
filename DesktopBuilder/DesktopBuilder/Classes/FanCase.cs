@@ -34,7 +34,7 @@ namespace DesktopBuilder.Classes
         {
             string tmp;
             tmp = this.Manufacturer + " " + this.Model + "\n" + this.Spd + "RPM"
-                + "\nGiá " + this.Price.ToString() + "000 VNĐ";
+                + "\nGiá " + base.PricetoStr(Price);
             return tmp;
         }
         public override List<Tuple<string, string>> PassDetailData()
@@ -44,6 +44,7 @@ namespace DesktopBuilder.Classes
             DetailData.Add(Tuple.Create("Model", Model));
             DetailData.Add(Tuple.Create("Size", Size.ToString() + "mm"));
             DetailData.Add(Tuple.Create("Speed", Spd.ToString() + "RPM"));
+            DetailData.Add(Tuple.Create("Price", base.PricetoStr(Price)));
 
             return DetailData;
         }
