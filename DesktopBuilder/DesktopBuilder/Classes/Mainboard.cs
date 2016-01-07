@@ -27,7 +27,7 @@ namespace DesktopBuilder.Classes
         public int PCI { get; set; }
         public int PCIx16 { get; set; } // PCI-Ex16
         public int PCIx1 { get; set; }  // PCI-Ex1
-        public int Price { get; set; }
+        //public int Price { get; set; }
         #endregion
 
         #region Methods

@@ -33,6 +33,7 @@ namespace DesktopBuilder.Controls
         #endregion
 
         #region Properies
+        public MainWindow Main { get; set; }
         private List<RadioButton> rdList = new List<RadioButton>(4);
         private List<CheckBox> cbList = new List<CheckBox>(12);
         private short Step; //indicate current step
@@ -143,8 +144,10 @@ namespace DesktopBuilder.Controls
                 string sID = "";
                 sID = ((cbVGA.IsChecked ?? false) ? "1" : "0") + sID;
                 sID = ((cbSSD.IsChecked ?? false) ? "1" : "0") + sID;
-                
-                aBuilder = new Builder(Convert.ToInt32(sID,2), Money);
+
+                aBuilder = new Builder(Convert.ToInt32(sID, 2), Money, Main.pList);
+                foreach (int i in aBuilder.GetComponents())
+                        MessageBox.Show(i.ToString());
             }
         }
         #endregion

@@ -18,7 +18,7 @@ namespace DesktopBuilder.Classes
         #region Properties
         public string Manufacturer { get; set; }
         public string Model { get; set; }
-        public int Price { get; set; }
+        //public int Price { get; set; }
         #endregion
 
         #region Methods

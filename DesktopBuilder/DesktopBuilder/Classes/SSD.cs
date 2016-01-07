@@ -19,7 +19,7 @@ namespace DesktopBuilder.Classes
         public string Manufacturer;
         public int Capacity;
         public int Interface;
-        public int Price;
+        //public int Price;
         #endregion
 
         #region Methods

@@ -123,21 +123,37 @@ namespace DesktopBuilder.Classes
     public class ProductList
     {
         #region Constructor
-        public ProductList()
+        public ProductList(bool loaddtb = true)
         {
             this.dbCon = new SQLiteConnection("Data Source=Hardwares.db;Version=3;"); // connect to database
-            this.CreateCPUList();
-            this.CreateMainboardList();
-            this.CreateRAMList();
-            this.CreateHDDList();
-            this.CreateSSDList();
-            this.CreateVGAList();
-            this.CreatePSUList();
-            this.CreateCaseList();
-            this.CreateFanCaseList();
-            this.CreateAirCPUCoolerList();
-            this.CreateODDList();
-            this.CreateSoundCardList();            
+            myList.Add(CPUList);
+            myList.Add(MainbList);
+            myList.Add(RAMList);
+            myList.Add(HDDList);
+            myList.Add(SSDList);
+            myList.Add(VGAList);
+            myList.Add(PSUList);
+            myList.Add(CaseList);
+            myList.Add(FanCaseList);
+            myList.Add(CoolerList);
+            myList.Add(ODDList);
+            myList.Add(SoundCardList);
+
+            if (loaddtb)
+            {
+                this.CreateCPUList();
+                this.CreateMainboardList();
+                this.CreateRAMList();
+                this.CreateHDDList();
+                this.CreateSSDList();
+                this.CreateVGAList();
+                this.CreatePSUList();
+                this.CreateCaseList();
+                this.CreateFanCaseList();
+                this.CreateAirCPUCoolerList();
+                this.CreateODDList();
+                this.CreateSoundCardList();
+            }
         }
         #endregion
        
@@ -190,7 +206,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(CPUList);
+            //myList.Add(CPUList);
         }
         private void CreateMainboardList()
         {
@@ -225,7 +241,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(MainbList);
+            //myList.Add(MainbList);
         }
         private void CreateRAMList()
         {
@@ -253,7 +269,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(RAMList);
+            //myList.Add(RAMList);
         }
         private void CreateHDDList()
         {
@@ -283,7 +299,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(HDDList);
+            //myList.Add(HDDList);
         }
         private void CreateSSDList()
         {
@@ -311,7 +327,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(SSDList);
+            //myList.Add(SSDList);
         }
         private void CreateVGAList()
         {
@@ -347,7 +363,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(VGAList);
+            //myList.Add(VGAList);
         }
         private void CreatePSUList()
         {
@@ -380,7 +396,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(PSUList);
+            //myList.Add(PSUList);
         }
         private void CreateCaseList()
         {
@@ -409,7 +425,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(CaseList);
+           //myList.Add(CaseList);
         }
         private void CreateFanCaseList()
         {
@@ -438,7 +454,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(FanCaseList);
+            //myList.Add(FanCaseList);
         }
         private void CreateAirCPUCoolerList()
         {
@@ -465,7 +481,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(CoolerList);
+            //myList.Add(CoolerList);
         }
         private void CreateODDList()
         {
@@ -495,7 +511,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(ODDList);
+            //myList.Add(ODDList);
         }
         private void CreateSoundCardList()
         {
@@ -526,7 +542,7 @@ namespace DesktopBuilder.Classes
             }
             dbCon.Close();
 
-            myList.Add(SoundCardList);
+            //myList.Add(SoundCardList);
         }
         public List<Component> List(int index = 0)
         {

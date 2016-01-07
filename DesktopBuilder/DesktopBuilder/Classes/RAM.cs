@@ -20,7 +20,7 @@ namespace DesktopBuilder.Classes
         public int Capacity{ get; set; }
         public int Bus { get; set; }
         public int memType { get; set; }
-        public int Price { get; set; }
+        //public int Price { get; set; }
         #endregion
 
         #region Methods

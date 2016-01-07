@@ -22,7 +22,7 @@ namespace DesktopBuilder.Classes
         public int SampleRate;
         public int Digital;
         public int Interface;
-        public int Price;
+        //public int Price;
         #endregion
 
         #region Methods

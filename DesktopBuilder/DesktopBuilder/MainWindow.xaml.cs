@@ -34,6 +34,7 @@ namespace DesktopBuilder
             gridSelected.Add(gridCustom);
 
             this.compoList.Main = this;
+            this.Advisor.Main = this;
             this.Custom.Main = this;
             this.Custom.InitCb();
         }

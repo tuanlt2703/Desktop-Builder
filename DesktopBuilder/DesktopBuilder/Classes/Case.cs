@@ -20,7 +20,7 @@ namespace DesktopBuilder.Classes
         public string Model { get; set; }
         public int Size { get; set; }
         public int FanSlot { get; set; }
-        public int Price { get; set; }
+        //public int Price { get; set; }
         #endregion
 
         #region Methods

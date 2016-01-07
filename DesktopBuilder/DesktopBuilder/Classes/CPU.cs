@@ -24,7 +24,7 @@ namespace DesktopBuilder.Classes
         public int Cores { get; set; }
         public int Threads { get; set; }
         public bool Unlocked { get; set; }
-        public int Price { get; set; }
+        //public int Price { get; set; }
         #endregion
 
         #region Methods

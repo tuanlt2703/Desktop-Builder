@@ -24,7 +24,7 @@ namespace DesktopBuilder.Classes
         public int _6pin { get; set; }
         public int _62pin { get; set; }
         public int Molex { get; set; }
-        public int Price { get; set; }
+        //public int Price { get; set; }
         #endregion
 
         #region Methods

@@ -21,7 +21,7 @@ namespace DesktopBuilder.Classes
         public string Type { get; set; }
         public int Spd { get; set; }
         public int Interface { get; set; }
-        public int Price { get; set; }
+        //public int Price { get; set; }
         #endregion
 
         #region Methods

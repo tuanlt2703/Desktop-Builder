@@ -21,7 +21,7 @@ namespace DesktopBuilder.Classes
         public int Interface { get; set; }
         public int Cache { get; set; }
         public int Spd { get; set; }
-        public int Price { get; set; }
+        //public int Price { get; set; }
         #endregion
 
         #region Methods

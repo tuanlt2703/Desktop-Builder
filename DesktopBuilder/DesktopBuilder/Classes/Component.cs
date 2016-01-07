@@ -9,6 +9,7 @@ namespace DesktopBuilder.Classes
     public abstract class Component
     {
         #region Properties
+        public int Price { get; set; }
         #endregion
 
         #region Methods
