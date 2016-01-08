@@ -10,13 +10,9 @@ namespace DesktopBuilder.Classes
     class Builder
     {
         #region Constructor
-        public Builder(int id, uint money, ProductList list)
+        public Builder()
         {
-            dbCon = new SQLiteConnection("Data Source=Recipe.db;Version=3;"); // connect to database
-            this.LoadRecipe(id, money);
-            this.Money = money;
-            this.pList = list;
-            LoadPossibleList();
+            dbCon = new SQLiteConnection("Data Source=Recipe.db;Version=3;"); // connect to database          
         }
         #endregion
 
@@ -91,7 +87,7 @@ namespace DesktopBuilder.Classes
                     foreach(Component item in pList.List(i))
                     {
                         // x - 5%*toal < price < x + 5%*toal
-                        if ((Money * RatioList[i] - 0.05 * Money) <= item.Price && item.Price <= (Money * RatioList[i] + 0.05 * Money)) 
+                        if ((Money * RatioList[i] - 0.15 * Money) <= item.Price && item.Price <= (Money * RatioList[i] + 0.05 * Money)) 
                         {
                             PossibleList[i].Add(j);
                         }
@@ -103,47 +99,54 @@ namespace DesktopBuilder.Classes
         private void SelectHardware() // select by components priority: CPU, VGA, RAM, Case, Main, PSU, HDD, SDD...
         {
             int selectedSocket = FindCPU();
-            int selectedRAMType = FindRAM();
-            int selectedCase = (RatioList[7] != 0) ? FindCase() : 3;
-            FindMain(selectedSocket, selectedRAMType, selectedCase);
+
+            int selectedRAMType = FindMain(selectedSocket);
+            FindRAM(selectedRAMType);       
 
             int powReq = (RatioList[5] != 0) ? FindVGA() : 0;
             FindPSU(powReq);
+
+            if (RatioList[7] != 0)
+                FindCase();
 
             findHDD();
             if (RatioList[4] != 0)
                 findSSD();
         }
-        public List<int> GetComponents()
+        public List<int> DoWork(int id, uint money, ProductList list)
         {
+            this.LoadRecipe(id, money);
+            this.Money = money;
+            this.pList = list;
+
+            LoadPossibleList();
             SelectHardware();
             return SelectedList;
         }
         //select hardware
         private int FindCPU() // index = 0, return socketID of selected CPU
         {
-            SelectedList[0] = CPUList[0];
-
+            int maxPrice = 0;
             List<Component> tmp = pList.List(0);
-            int max = tmp[CPUList[0]].Price;
-            for (int i = 1; i < CPUList.Count; i++)
+            for (int i = 0; i < CPUList.Count; i++)
             {
-                if (max < tmp[CPUList[i]].Price)
+                CPU cpu = (tmp[CPUList[i]] as CPU);
+                if (cpu.Price > maxPrice)
                 {
-                    max = tmp[CPUList[i]].Price;
+                    maxPrice = cpu.Price;
                     SelectedList[0] = CPUList[i];
-                }
+                }              
             }
             return (tmp[SelectedList[0]] as CPU).Socket;
         }
-        private void FindMain(int Socket, int memType, int Size) // index = 1,
+        private int FindMain(int Socket) // index = 1, return memType of selected Mainboard
         {
             int maxPrice = 0;
             List<Component> tmp = pList.List(1);
             for (int i = 0; i < MainbList.Count; i++)
             {
                 Mainboard main = (tmp[MainbList[i]] as Mainboard);
-                if (main.Socket == Socket && main.memType == memType && (main.Size <= Size))
+                if (main.Socket == Socket )
                 {
                     if(main.Price > maxPrice)
                     {
@@ -152,64 +155,63 @@ namespace DesktopBuilder.Classes
                     }
                 }
             }
+            return (tmp[SelectedList[1]] as Mainboard).memType;
         }
-        private int FindRAM() // index = 2, return RAMTypeID of selected RAM
+        private void FindRAM(int memType) // index = 2, return RAMTypeID of selected RAM
         {
-            SelectedList[2] = RAMList[0];
-
+            int maxPrice = 0;
             List<Component> tmp = pList.List(2);
-            int max = tmp[RAMList[0]].Price;
-            for (int i = 1; i < RAMList.Count; i++)
+            for (int i = 0; i < RAMList.Count; i++)
             {
-                if (max < tmp[RAMList[i]].Price)
+                RAM ram = (tmp[RAMList[i]] as RAM);
+                if (ram.memType == memType)
                 {
-                    max = tmp[RAMList[i]].Price;
-                    SelectedList[2] = RAMList[i];
+                    if (ram.Price > maxPrice)
+                    {
+                        maxPrice = ram.Price;
+                        SelectedList[2] = RAMList[i];
+                    }
                 }
             }
-            return (tmp[SelectedList[2]] as RAM).memType;
         }
         private void findHDD() // index = 3,
         {
-            SelectedList[3] = HDDList[0];
-
+            int maxPrice = 0;
             List<Component> tmp = pList.List(3);
-            int max = tmp[HDDList[0]].Price;
-            for (int i = 1; i < HDDList.Count; i++)
+            for (int i = 0; i < HDDList.Count; i++)
             {
-                if (max < tmp[HDDList[i]].Price)
+                HDD hdd = (tmp[HDDList[i]] as HDD);
+                if (hdd.Price > maxPrice)
                 {
-                    max = tmp[HDDList[i]].Price;
+                    maxPrice = hdd.Price;
                     SelectedList[3] = HDDList[i];
                 }
             }
         }
         private void findSSD() // index = 4,
         {
-            SelectedList[4] = SSDList[0];
-
+            int maxPrice = 0;
             List<Component> tmp = pList.List(4);
-            int max = tmp[SSDList[0]].Price;
-            for (int i = 1; i < SSDList.Count; i++)
+            for (int i = 0; i < SSDList.Count; i++)
             {
-                if (max < tmp[SSDList[i]].Price)
+                SSD ssd = (tmp[SSDList[i]] as SSD);
+                if (ssd.Price > maxPrice)
                 {
-                    max = tmp[SSDList[i]].Price;
+                    maxPrice = ssd.Price;
                     SelectedList[4] = SSDList[i];
                 }
             }
         }
         private int FindVGA() // index = 5, return Power Require of selected VGA
         {
-            SelectedList[5] = VGAList[0];
-
+            int maxPrice = 0;
             List<Component> tmp = pList.List(5);
-            int max = tmp[VGAList[0]].Price;
-            for (int i = 1; i < VGAList.Count; i++)
+            for (int i = 0; i < VGAList.Count; i++)
             {
-                if (max < tmp[VGAList[i]].Price)
+                VGA vga = (tmp[VGAList[i]] as VGA);
+                if (vga.Price > maxPrice)
                 {
-                    max = tmp[VGAList[i]].Price;
+                    maxPrice = vga.Price;
                     SelectedList[5] = VGAList[i];
                 }
             }
@@ -222,7 +224,7 @@ namespace DesktopBuilder.Classes
             for (int i = 0; i < PSUList.Count; i++)
             {
                 PSU psu = (tmp[PSUList[i]] as PSU);
-                if (psu.Power >= PowerReq + 80)
+                if (psu.Power >= PowerReq) // + 80)
                 {
                     if (psu.Price > maxPrice)
                     {
@@ -232,21 +234,22 @@ namespace DesktopBuilder.Classes
                 }
             }
         }
-        private int FindCase() //index 7, return Mainboard-SizeID of selected Case
+        private void FindCase() //index 7,
         {
-            SelectedList[7] = CaseList[0];
-
+            int maxPrice = 0;
             List<Component> tmp = pList.List(7);
-            int max = tmp[CaseList[0]].Price;
-            for (int i = 1; i < CaseList.Count; i++)
+            for (int i = 0; i < CaseList.Count; i++)
             {
-                if (max < tmp[CaseList[i]].Price)
+                Case cse = (tmp[CaseList[i]] as Case);
+                if (cse.Size >= (pList.List(1)[SelectedList[1]] as Mainboard).Size)
                 {
-                    max = tmp[CaseList[i]].Price;
-                    SelectedList[7] = CaseList[i];
+                    if (cse.Price > maxPrice)
+                    {
+                        maxPrice = cse.Price;
+                        SelectedList[7] = CaseList[i];
+                    }
                 }
             }
-            return (tmp[SelectedList[7]] as Case).Size;
         }
         //current not supported
         private void FindFan() //index = 8,

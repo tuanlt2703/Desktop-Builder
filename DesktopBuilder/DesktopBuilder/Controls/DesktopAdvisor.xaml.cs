@@ -26,6 +26,8 @@ namespace DesktopBuilder.Controls
         public DesktopAdvisor()
         {
             InitializeComponent();
+
+            Result._DA = this;
             InitRequirementList();
             InitComponentList();
             Step = 1;
@@ -40,7 +42,7 @@ namespace DesktopBuilder.Controls
         private uint Money; //Money input
         private short Choice; //User requirement
         private List<bool> coList = new List<bool>(12);
-        private Builder aBuilder;
+        private Builder aBuilder = new Builder();
         #endregion
 
         #region Events
@@ -124,7 +126,7 @@ namespace DesktopBuilder.Controls
         {
             coList.Clear();
 
-            string tmp = "Money: " + Money.ToString().Insert(Money.ToString().Length - 3, ".").Insert(Money.ToString().Length - 6, ". VNĐ")
+            string tmp = "Money: " + Money.ToString().Insert(Money.ToString().Length - 3, ".").Insert(Money.ToString().Length - 6, ".") + " VNĐ"
                 + "\n\rRequirement: " + rdList[Choice].Content + "\n\rSelected Components: ";
             for (int i = 0; i < cbList.Count; i++)
             {
@@ -145,9 +147,8 @@ namespace DesktopBuilder.Controls
                 sID = ((cbVGA.IsChecked ?? false) ? "1" : "0") + sID;
                 sID = ((cbSSD.IsChecked ?? false) ? "1" : "0") + sID;
 
-                aBuilder = new Builder(Convert.ToInt32(sID, 2), Money, Main.pList);
-                foreach (int i in aBuilder.GetComponents())
-                        MessageBox.Show(i.ToString());
+                Result.Load(Main.pList, aBuilder.DoWork(Convert.ToInt32(sID, 2), Money, Main.pList));
+                Result.Visibility = Visibility.Visible;
             }
         }
         #endregion
@@ -178,10 +179,13 @@ namespace DesktopBuilder.Controls
         }
         private bool UserMoney()
         {
-            if(tbCash.Text.Length >= 7)
+            if ((tbCash.Text.Length >= 7 && tbCash.Text[0] >= '7')
+                || (tbCash.Text.Length <= 8 && tbCash.Text[0] <= '4') 
+                )
             {
                 Money = Convert.ToUInt32(tbCash.Text);
-                if (Money > 7000000) //7m
+                //recommend
+                if (Money >= 7000000) //7m
                 {
                     cbVGA.IsChecked = true; //rec VGA
                     if (Money <= 10000000) //10m
@@ -192,8 +196,7 @@ namespace DesktopBuilder.Controls
                     {
                         cbSSD.IsChecked = true; //rec SSD
                     }
-                }
-                
+                }               
                 return true;
             }
             tbCash.BorderBrush = Brushes.Red;
@@ -223,6 +226,17 @@ namespace DesktopBuilder.Controls
             }
             return false;
         }       
+        public void ReBuild()
+        {
+            Step = 1;
+            step1.Visibility = Visibility.Visible;
+            step2.Visibility = Visibility.Hidden;
+            step3.Visibility = Visibility.Hidden;
+            Result.Visibility = Visibility.Hidden;
+            btnPre.Visibility = Visibility.Hidden;
+            btnNext.Visibility = Visibility.Visible;
+            tbCash.Text = "";
+        }
         #endregion      
     }
 }

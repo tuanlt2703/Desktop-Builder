@@ -27,7 +27,8 @@ namespace DesktopBuilder.Classes
         public override string Info()
         {
             string tmp;
-            tmp = this.Manufacturer + " " + this.Model + " " + cList.mbSize[this.Size];
+            //tmp = this.Manufacturer + " " + this.Model + " " + cList.mbSize[this.Size];
+            tmp = this.Model + " " + cList.mbSize[this.Size];
             return tmp;
         }
         public override string BriefInfo()
