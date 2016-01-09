@@ -49,6 +49,9 @@ namespace DesktopBuilder.Classes
         }
         private void LoadRecipe(int id, uint money)
         {
+            RatioList.Clear();
+            PossibleList.Clear();
+
             dbCon.Open();
             string query = "select * From Ratio Where (Ratio.Id = " + id + ") and (Ratio.Max >=" + money + ") and (Ratio.Min <" + money + ")";
             //create query command & execute
