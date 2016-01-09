@@ -12,7 +12,20 @@ namespace DesktopBuilder.Classes
         #region Constructor
         public Builder()
         {
-            dbCon = new SQLiteConnection("Data Source=Recipe.db;Version=3;"); // connect to database          
+            dbCon = new SQLiteConnection("Data Source=Recipe.db;Version=3;"); // connect to database        
+  
+            PossibleList.Add(CPUList);
+            PossibleList.Add(MainbList);
+            PossibleList.Add(RAMList);
+            PossibleList.Add(HDDList);
+            PossibleList.Add(SSDList);
+            PossibleList.Add(VGAList);
+            PossibleList.Add(PSUList);
+            PossibleList.Add(CaseList);
+            PossibleList.Add(FanCaseList);
+            PossibleList.Add(CoolerList);
+            PossibleList.Add(ODDList);
+            PossibleList.Add(SoundCardList);
         }
         #endregion
 
@@ -21,7 +34,7 @@ namespace DesktopBuilder.Classes
         ProductList pList;
         private List<double> RatioList = new List<double>();        
         private uint Money;
-        private List<int> SelectedList = new List<int>(new int[] {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1});
+        private List<int> SelectedList;// = new List<int>(new int[] {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1});
 
         private List<List<int>> PossibleList = new List<List<int>>(12);
         private List<int> CPUList = new List<int>(); //0
@@ -50,8 +63,6 @@ namespace DesktopBuilder.Classes
         private void LoadRecipe(int id, uint money)
         {
             RatioList.Clear();
-            PossibleList.Clear();
-
             dbCon.Open();
             string query = "select * From Ratio Where (Ratio.Id = " + id + ") and (Ratio.Max >=" + money + ") and (Ratio.Min <" + money + ")";
             //create query command & execute
@@ -65,25 +76,13 @@ namespace DesktopBuilder.Classes
                 RatioList.Add(myReader.GetDouble(i));
             }
             
-            dbCon.Close();
-
-            PossibleList.Add(CPUList);
-            PossibleList.Add(MainbList);
-            PossibleList.Add(RAMList);
-            PossibleList.Add(HDDList);
-            PossibleList.Add(SSDList);
-            PossibleList.Add(VGAList);
-            PossibleList.Add(PSUList);
-            PossibleList.Add(CaseList);
-            PossibleList.Add(FanCaseList);
-            PossibleList.Add(CoolerList);
-            PossibleList.Add(ODDList);
-            PossibleList.Add(SoundCardList);
+            dbCon.Close();           
         }
         private void LoadPossibleList() //Create list of components fit user's money & requirement
         {
             for (int i = 0; i < PossibleList.Count; i++)
             {
+                PossibleList[i].Clear();
                 if (RatioList[i] != 0)
                 {
                     int j = 0;
@@ -101,6 +100,8 @@ namespace DesktopBuilder.Classes
         }
         private void SelectHardware() // select by components priority: CPU, VGA, RAM, Case, Main, PSU, HDD, SDD...
         {
+            SelectedList = new List<int>(new int[] {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1});
+
             int selectedSocket = FindCPU();
 
             int selectedRAMType = FindMain(selectedSocket);
@@ -118,6 +119,7 @@ namespace DesktopBuilder.Classes
         }
         public List<int> DoWork(int id, uint money, ProductList list)
         {
+            
             this.LoadRecipe(id, money);
             this.Money = money;
             this.pList = list;

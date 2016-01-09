@@ -137,13 +137,11 @@ namespace DesktopBuilder.Controls
         }
         public void ShowProductDetail(int Index, int ID)
         {
-            //CPU cp = (CPU)productList.List(0)[0];
-            //List<Tuple<string, string>> tmp = cp.PassDetailData();
-
             List<Tuple<string, string>> tmp = Main.pList.List(Index)[ID].PassDetailData();
 
             //clear last selected product detail
             ProductDetail.Details.Children.Clear();
+
             //add new selected product detail
             foreach(var item in tmp)
             {

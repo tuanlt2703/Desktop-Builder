@@ -62,6 +62,9 @@ namespace DesktopBuilder.Controls
         }
         private void DoWord()
         {
+            //reset result-form
+            foreach (TextBlock tb in TBList)
+                tb.Text = "";
             int total = 0;
             for (int i = 0; i < SelectedList.Count; i++)
             {

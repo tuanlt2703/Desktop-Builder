@@ -179,28 +179,29 @@ namespace DesktopBuilder.Controls
         }
         private bool UserMoney()
         {
-            if ((tbCash.Text.Length >= 7 && tbCash.Text[0] >= '7')
-                || (tbCash.Text.Length <= 8 && tbCash.Text[0] <= '4') 
-                )
+            if (tbCash.Text.Length >= 7 && tbCash.Text.Length <= 8) 
             {
                 Money = Convert.ToUInt32(tbCash.Text);
-                //recommend
-                if (Money >= 7000000) //7m
+                if (Money >= 7000000 && Money <= 30000000)
                 {
-                    cbVGA.IsChecked = true; //rec VGA
-                    if (Money <= 10000000) //10m
+                    //recommend
+                    if (Money >= 7000000) //7m
                     {
-                        cbSSD.IsEnabled = false; //not rec SSD
+                        cbVGA.IsChecked = true; //rec VGA
+                        if (Money <= 10000000) //10m
+                        {
+                            cbSSD.IsEnabled = false; //not rec SSD
+                        }
+                        else if (Money >= 15000000) //15m
+                        {
+                            cbSSD.IsChecked = true; //rec SSD
+                        }
                     }
-                    else if (Money >= 15000000) //15m
-                    {
-                        cbSSD.IsChecked = true; //rec SSD
-                    }
-                }               
-                return true;
+                    return true;
+                }
             }
             tbCash.BorderBrush = Brushes.Red;
-            MessageBox.Show("Error", "Error", MessageBoxButton.OK);
+            MessageBox.Show("7m <= Money <= 30m", "Error", MessageBoxButton.OK);
             tbCash.BorderBrush = Brushes.Black;
             return false;
         }       

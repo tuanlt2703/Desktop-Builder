@@ -561,7 +561,7 @@ namespace DesktopBuilder.Controls
         {
             if (!Save)
             {
-                if (AllCoreItemsSelected())
+                if (ItemsSelectedValid())
                 {
                     imgComplete.Visibility = Visibility.Visible;
                     btnRS.Visibility = Visibility.Visible;
@@ -591,7 +591,7 @@ namespace DesktopBuilder.Controls
         #endregion
 
         #region Methods
-        private bool AllCoreItemsSelected()
+        private bool ItemsSelectedValid()
         {
             if (CPUList.SelectedIndex == 0 ||
                 MainboardList.SelectedIndex == 0 ||
