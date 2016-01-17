@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using DesktopBuilder.Classes;
+using Xceed.Wpf.Toolkit;
 
 namespace DesktopBuilder.Controls
 {

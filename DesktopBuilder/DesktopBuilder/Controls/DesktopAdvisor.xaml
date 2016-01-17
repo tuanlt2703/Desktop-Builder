@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:DesktopBuilder.Controls" x:Class="DesktopBuilder.Controls.DesktopAdvisor" 
              mc:Ignorable="d" Height="509" Width="638">
     <Grid>
@@ -10,7 +11,7 @@
 
         <Grid x:Name="step1" Visibility="Visible">
             <Label Content="Amount of money you can afford:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,142,0,0" Foreground="#2F5E73" FontSize="24"/>
-            <TextBox x:Name="tbCash" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,201,0,0" Height="27" Width="159" TextAlignment="Right" PreviewTextInput="TextBox_PreviewTextInput" PreviewKeyDown="TextBox_PreviewKeyDown"/>
+            <xctk:MaskedTextBox Mask="000.000.000" x:Name="tbCash" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,201,0,0" Height="27" Width="159" TextAlignment="Right" PreviewTextInput="TextBox_PreviewTextInput" PreviewKeyDown="TextBox_PreviewKeyDown"/>
             <Label Content="VNĐ" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="379,194,0,0" Foreground="#2F5E73" FontSize="20"/>
             <Label x:Name="lbWarnning" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="236,176,0,0" Foreground="Red" Content="Only numeric allowed" Visibility="Hidden"/>
         </Grid>
