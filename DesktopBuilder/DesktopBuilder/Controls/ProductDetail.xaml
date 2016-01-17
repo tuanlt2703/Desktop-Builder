@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DesktopBuilder.Controls" x:Class="DesktopBuilder.Controls.ProductDetail" 
              mc:Ignorable="d" Height="443" Width="618">
     <Grid>
-        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="334" Width="363" Source="/ProductImg/Default_Detail.jpg" Margin="0,52,0,0"/>
+        <Image x:Name="Avatar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="334" Width="363" Source="/ProductImg/Default.png" Margin="0,52,0,0"/>
         <ScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top" Height="443" Width="253" Margin="365,0,0,0" CanContentScroll="True" VerticalScrollBarVisibility="Auto">
             <UniformGrid x:Name="Details" VerticalAlignment="Center" HorizontalAlignment="Center" Columns="1"/>
         </ScrollViewer>

@@ -31,3 +31,4 @@ C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\Desktop
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\DesktopBuilder.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\Result.baml
 C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\obj\Debug\Controls\Result.g.cs
+C:\Users\Administrator\Documents\Projects\Desktop-Builder\DesktopBuilder\DesktopBuilder\bin\Debug\Xceed.Wpf.Toolkit.dll

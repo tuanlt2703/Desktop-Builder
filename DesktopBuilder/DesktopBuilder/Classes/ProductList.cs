@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Data.SQLite;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace DesktopBuilder.Classes
 {
@@ -141,18 +143,7 @@ namespace DesktopBuilder.Classes
 
             if (loaddtb)
             {
-                this.CreateCPUList();
-                this.CreateMainboardList();
-                this.CreateRAMList();
-                this.CreateHDDList();
-                this.CreateSSDList();
-                this.CreateVGAList();
-                this.CreatePSUList();
-                this.CreateCaseList();
-                this.CreateFanCaseList();
-                this.CreateAirCPUCoolerList();
-                this.CreateODDList();
-                this.CreateSoundCardList();
+                CreateProductList();
             }
         }
         #endregion
@@ -172,12 +163,14 @@ namespace DesktopBuilder.Classes
         private List<Component> ODDList = new List<Component>();
         private List<Component> SoundCardList = new List<Component>();
         private SQLiteConnection dbCon;
+
+        private string AssemblyPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         #endregion
 
         #region Methods
         private void CreateCPUList()
         {
-            dbCon.Open();
+            //dbCon.Open();
             //query string
             string query = "select * from CPU";
 
@@ -185,12 +178,13 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to CPUList
             while (myReader.Read())
             {
                 CPU tmp = new CPU();
                 
                 //load cpu details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Processor = myReader.GetString(2);
                 tmp.Gen = myReader.GetString(3);
@@ -202,15 +196,19 @@ namespace DesktopBuilder.Classes
                 tmp.Unlocked = myReader.GetBoolean(9);
                 tmp.Price = myReader.GetInt32(10);
 
+                //check and create cpu's avatar
+                string path = AssemblyPath + "/Image/CPU/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 CPUList.Add(tmp);
             }
-            dbCon.Close();
+            //dbCon.Close();
 
             //myList.Add(CPUList);
         }
         private void CreateMainboardList()
         {
-            dbCon.Open();
             //query string
             string query = "select * from Mainboard";
 
@@ -218,12 +216,13 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to MainboardList
             while (myReader.Read())
             {
                 Mainboard tmp = new Mainboard();
 
-                //load cpu details
+                //load mainboard details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Model = myReader.GetString(2);
                 tmp.Chipet = myReader.GetString(3);
@@ -237,15 +236,16 @@ namespace DesktopBuilder.Classes
                 tmp.PCIx16 = myReader.GetInt32(11);
                 tmp.Price = myReader.GetInt32(12);
 
+                //check and create mainboard's avatar
+                string path = AssemblyPath + "/Image/Mainboard/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 MainbList.Add(tmp);
             }
-            dbCon.Close();
-
-            //myList.Add(MainbList);
         }
         private void CreateRAMList()
         {
-            dbCon.Open();
             //query string
             string query = "select * from RAM";
 
@@ -253,28 +253,30 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to RAMList
             while (myReader.Read())
             {
                 RAM tmp = new RAM();
 
-                //load cpu details
+                //load ram details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Capacity = myReader.GetInt32(2);
                 tmp.Bus = myReader.GetInt32(3);
                 tmp.memType = myReader.GetInt32(4);
                 tmp.Price = myReader.GetInt32(5);
 
+                //check and create RAM's avatar
+                string path = AssemblyPath + "/Image/RAM/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 RAMList.Add(tmp);
             }
-            dbCon.Close();
-
-            //myList.Add(RAMList);
         }
         private void CreateHDDList()
         {
             //load from dtb
-            dbCon.Open();
             //query string
             string query = "select * from HDD";
 
@@ -282,12 +284,13 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to HDDList
             while (myReader.Read())
             {
                 HDD tmp = new HDD();
 
-                //load cpu details
+                //load hdd details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Capacity = myReader.GetInt32(2);
                 tmp.Interface = myReader.GetInt32(3);
@@ -295,16 +298,17 @@ namespace DesktopBuilder.Classes
                 tmp.Spd = myReader.GetInt32(5);
                 tmp.Price = myReader.GetInt32(6);
 
+                //check and create HDD's avatar
+                string path = AssemblyPath + "/Image/HDD/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 HDDList.Add(tmp);
             }
-            dbCon.Close();
-
-            //myList.Add(HDDList);
         }
         private void CreateSSDList()
         {
             //load from dtb
-            dbCon.Open();
             //query string
             string query = "select * from SSD";
 
@@ -312,27 +316,29 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to SSDList
             while (myReader.Read())
             {
                 SSD tmp = new SSD();
 
-                //load cpu details
+                //load ssd details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Capacity = myReader.GetInt32(2);
                 tmp.Interface = myReader.GetInt32(3);                
                 tmp.Price = myReader.GetInt32(4);
 
+                //check and create SSD's avatar
+                string path = AssemblyPath + "/Image/SSD/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 SSDList.Add(tmp);
             }
-            dbCon.Close();
-
-            //myList.Add(SSDList);
         }
         private void CreateVGAList()
         {
             //load from dtb
-            dbCon.Open();
             //query string
             string query = "select * from VGA";
 
@@ -340,12 +346,13 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to VGAList
             while (myReader.Read())
             {
                 VGA tmp = new VGA();
 
-                //load cpu details
+                //load vga details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.GPU = myReader.GetString(2);
                 tmp.GPUManufacturer = myReader.GetString(3);
@@ -359,16 +366,17 @@ namespace DesktopBuilder.Classes
                 tmp._8pin = myReader.GetInt32(11);
                 tmp.Price = myReader.GetInt32(12);
 
+                //check and create VGA's avatar
+                string path = AssemblyPath + "/Image/VGA/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 VGAList.Add(tmp);
             }
-            dbCon.Close();
-
-            //myList.Add(VGAList);
         }
         private void CreatePSUList()
         {
             //load from dtb
-            dbCon.Open();
             //query string
             string query = "select * from PSU";
 
@@ -376,12 +384,13 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to PSUList
             while (myReader.Read())
             {
                 PSU tmp = new PSU();
 
-                //load cpu details
+                //load psu details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Model = myReader.GetString(2);
                 tmp.Power = myReader.GetInt32(3);
@@ -392,16 +401,17 @@ namespace DesktopBuilder.Classes
                 tmp.Molex = myReader.GetInt32(8);
                 tmp.Price = myReader.GetInt32(9);
 
+                //check and create mainboard's avatar
+                string path = AssemblyPath + "/Image/PSU/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 PSUList.Add(tmp);
             }
-            dbCon.Close();
-
-            //myList.Add(PSUList);
         }
         private void CreateCaseList()
         {
             //load from dtb
-            dbCon.Open();
             //query string
             string query = "select * from Cases";
 
@@ -414,23 +424,25 @@ namespace DesktopBuilder.Classes
             {
                 Case tmp = new Case();
 
-                //load cpu details
+                //load case details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Model = myReader.GetString(2);
                 tmp.Size = myReader.GetInt32(3);
                 tmp.FanSlot = myReader.GetInt32(4);
                 tmp.Price = myReader.GetInt32(5);
 
+                //check and create Case's avatar
+                string path = AssemblyPath + "/Image/Case/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 CaseList.Add(tmp);
             }
-            dbCon.Close();
-
-           //myList.Add(CaseList);
         }
         private void CreateFanCaseList()
         {
             //load from dtb
-            dbCon.Open();
             //query string
             string query = "select * from FanCase";
 
@@ -438,28 +450,30 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to FanCaseList
             while (myReader.Read())
             {
                 FanCase tmp = new FanCase();
 
-                //load cpu details
+                //load fan details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Model = myReader.GetString(2);
                 tmp.Size = myReader.GetInt32(3);
                 tmp.Spd = myReader.GetInt32(4);
                 tmp.Price = myReader.GetInt32(5);
 
+                //check and create FanCase's avatar
+                string path = AssemblyPath + "/Image/Fan/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 FanCaseList.Add(tmp);
             }
-            dbCon.Close();
-
-            //myList.Add(FanCaseList);
         }
         private void CreateAirCPUCoolerList()
         {
             //load from dtb
-            dbCon.Open();
             //query string
             string query = "select * from AirCPUCooler";
 
@@ -467,26 +481,28 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to CoolerList
             while (myReader.Read())
             {
                 AirCPUCooler tmp = new AirCPUCooler();
 
-                //load cpu details
+                //load cooler details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Model = myReader.GetString(2);
                 tmp.Price = myReader.GetInt32(3);
 
+                //check and create cooler's avatar
+                string path = AssemblyPath + "/Image/Cooler/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 CoolerList.Add(tmp);
             }
-            dbCon.Close();
-
-            //myList.Add(CoolerList);
         }
         private void CreateODDList()
         {
             //load from dtb
-            dbCon.Open();
             //query string
             string query = "select * from ODD";
 
@@ -494,12 +510,13 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to ODDList
             while (myReader.Read())
             {
                 ODD tmp = new ODD();
 
                 //load cpu details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Model = myReader.GetString(2);
                 tmp.Type = myReader.GetString(3);
@@ -507,16 +524,17 @@ namespace DesktopBuilder.Classes
                 tmp.Interface = myReader.GetInt32(5);
                 tmp.Price = myReader.GetInt32(6);
 
+                //check and create ODD's avatar
+                string path = AssemblyPath + "/Image/ODD/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 ODDList.Add(tmp);
             }
-            dbCon.Close();
-
-            //myList.Add(ODDList);
         }
         private void CreateSoundCardList()
         {
             //load from dtb
-            dbCon.Open();
             //query string
             string query = "select * from SoundCard";
 
@@ -524,12 +542,13 @@ namespace DesktopBuilder.Classes
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             SQLiteDataReader myReader = cmd.ExecuteReader();
 
-            //load result to socketlist
+            //load result to SCList
             while (myReader.Read())
             {
                 SoundCard tmp = new SoundCard();
 
-                //load cpu details
+                //load soundcard details
+                tmp.ID = myReader.GetInt32(0);
                 tmp.Manufacturer = myReader.GetString(1);
                 tmp.Model = myReader.GetString(2);
                 tmp.Channel = myReader.GetString(3);
@@ -538,11 +557,30 @@ namespace DesktopBuilder.Classes
                 tmp.Interface = myReader.GetInt32(6);
                 tmp.Price = myReader.GetInt32(7);
 
+                //check and create soundcard's avatar
+                string path = AssemblyPath + "/Image/SC/" + tmp.ID.ToString() + ".jpg";
+                if (File.Exists(path))
+                    tmp.Avatar = new BitmapImage(new Uri(path));
+
                 SoundCardList.Add(tmp);
             }
+        }
+        private void CreateProductList()
+        {
+            dbCon.Open();
+            this.CreateCPUList();
+            this.CreateMainboardList();
+            this.CreateRAMList();
+            this.CreateHDDList();
+            this.CreateSSDList();
+            this.CreateVGAList();
+            this.CreatePSUList();
+            this.CreateCaseList();
+            this.CreateFanCaseList();
+            this.CreateAirCPUCoolerList();
+            this.CreateODDList();
+            this.CreateSoundCardList();
             dbCon.Close();
-
-            //myList.Add(SoundCardList);
         }
         public List<Component> List(int index = 0)
         {

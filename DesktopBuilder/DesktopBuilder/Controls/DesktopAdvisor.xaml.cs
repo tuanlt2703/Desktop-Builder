@@ -136,7 +136,7 @@ namespace DesktopBuilder.Controls
                     tmp += cbList[i].Content + " ";
             }
 
-            MessageBoxResult choice = MessageBox.Show(tmp, "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+            MessageBoxResult choice = System.Windows.MessageBox.Show(tmp, "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
             if (choice == MessageBoxResult.Yes)
             {
                 step3.Visibility = Visibility.Hidden;
@@ -202,7 +202,7 @@ namespace DesktopBuilder.Controls
                 }
             }
             tbCash.BorderBrush = Brushes.Red;
-            MessageBox.Show("7m <= Money <= 30m", "Error", MessageBoxButton.OK);
+            System.Windows.MessageBox.Show("7m <= Money <= 30m", "Error", MessageBoxButton.OK);
             tbCash.BorderBrush = Brushes.Black;
             return false;
         }       
@@ -221,7 +221,7 @@ namespace DesktopBuilder.Controls
             {
                 rdList[i].Background = Brushes.Red;
             }
-            MessageBox.Show("Must Select PC Requirement", "Warnning", MessageBoxButton.OK);         
+            System.Windows.MessageBox.Show("Must Select PC Requirement", "Warnning", MessageBoxButton.OK);         
             for (short i = 0; i < rdList.Count; i++)
             {
                 rdList[i].Background = null;

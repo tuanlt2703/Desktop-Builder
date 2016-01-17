@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DesktopBuilder.Classes;
+
 namespace DesktopBuilder.Controls
 {
     /// <summary>
@@ -31,7 +32,9 @@ namespace DesktopBuilder.Controls
         #region Properties
         private bool _On2nd;
         public MainWindow Main { get; set; }
-
+        //private string AssemblyPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        //private string[] cPath = {"/Image/CPU/", "/Image/Mainboard/", "/Image/RAM/", "/Image/HDD/", "/Image/SSD/", "/Image/VGA/",
+        //                          "/Image/PSU/", "/Image/Case/", "/Image/Cooler/", "/Image/ODD/", "/Image/ODD/", "/Image/SC/"};
         #endregion
 
         #region Events
@@ -128,29 +131,39 @@ namespace DesktopBuilder.Controls
             ProductList.Children.Clear(); // clear old product list
             for (int i = 0; i < Main.pList.List(index).Count; i++)
             {
-                Product show = new Product(index, i, this);
-                show.tbBriefInfo.Text = Main.pList.List(index)[i].BriefInfo();
-                //show.avatar.Source = new BitmapImage(new Uri( "CoverPath" , UriKind.Relative));
+                Component tmp = Main.pList.List(index)[i];
+
+
+                Product show = new Product(index, i, this);              
+                show.tbBriefInfo.Text = tmp.BriefInfo();;
+                if (tmp.Avatar != null)
+                    show.Avatar.Source = tmp.Avatar;
+
 
                 ProductList.Children.Add(show);
             }
         }
         public void ShowProductDetail(int Index, int ID)
         {
-            List<Tuple<string, string>> tmp = Main.pList.List(Index)[ID].PassDetailData();
+            Component tmp = Main.pList.List(Index)[ID];
+            List<Tuple<string, string>> details = tmp.PassDetailData();
 
             //clear last selected product detail
             ProductDetail.Details.Children.Clear();
+            ProductDetail.Avatar.Source = new BitmapImage(new Uri("/ProductImg/Default.png", UriKind.Relative));
 
             //add new selected product detail
-            foreach(var item in tmp)
+            foreach(var item in details)
             {
                 Detail dt = new Detail();
                 dt.detail.Text = item.Item1;
                 dt.Info.Text = item.Item2;
                 ProductDetail.Details.Children.Add(dt);
             }
-
+            //avatar
+            if (tmp.Avatar != null)
+                ProductDetail.Avatar.Source = tmp.Avatar;
+            //
             _On2nd = false;
             scrPList.Visibility = Visibility.Hidden; // hide selected component product list
             ProductDetail.Visibility = Visibility.Visible; // show selected product detail

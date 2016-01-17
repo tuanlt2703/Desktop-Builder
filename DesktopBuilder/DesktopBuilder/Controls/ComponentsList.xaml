@@ -198,6 +198,6 @@
             <StackPanel>
                 <Image Source="/Image/GoBack.png" Height="24"/>
             </StackPanel>
-        </Button>        
+        </Button>
     </Grid>
 </UserControl>
