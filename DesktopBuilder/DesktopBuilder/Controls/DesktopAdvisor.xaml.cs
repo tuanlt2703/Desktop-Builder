@@ -180,9 +180,10 @@ namespace DesktopBuilder.Controls
         }
         private bool UserMoney()
         {
-            if (tbCash.Text.Length >= 7 && tbCash.Text.Length <= 8) 
+            string tmp = tbCash.Text.Replace(".", "").Replace("_", "");
+            if (tmp.Length >= 7 && tmp.Length <= 9) 
             {
-                Money = Convert.ToUInt32(tbCash.Text);
+                Money = Convert.ToUInt32(tmp);
                 if (Money >= 7000000 && Money <= 30000000)
                 {
                     //recommend

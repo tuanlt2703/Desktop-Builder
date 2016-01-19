@@ -197,7 +197,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(10);
 
                 //check and create cpu's avatar
-                string path = AssemblyPath + "/Image/CPU/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/CPU/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -237,7 +237,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(12);
 
                 //check and create mainboard's avatar
-                string path = AssemblyPath + "/Image/Mainboard/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/Mainboard/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -267,7 +267,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(5);
 
                 //check and create RAM's avatar
-                string path = AssemblyPath + "/Image/RAM/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/RAM/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -299,7 +299,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(6);
 
                 //check and create HDD's avatar
-                string path = AssemblyPath + "/Image/HDD/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/HDD/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -329,7 +329,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(4);
 
                 //check and create SSD's avatar
-                string path = AssemblyPath + "/Image/SSD/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/SSD/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -367,7 +367,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(12);
 
                 //check and create VGA's avatar
-                string path = AssemblyPath + "/Image/VGA/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/VGA/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -402,7 +402,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(9);
 
                 //check and create mainboard's avatar
-                string path = AssemblyPath + "/Image/PSU/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/PSU/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -433,7 +433,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(5);
 
                 //check and create Case's avatar
-                string path = AssemblyPath + "/Image/Case/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/Case/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -464,7 +464,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(5);
 
                 //check and create FanCase's avatar
-                string path = AssemblyPath + "/Image/Fan/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/Fan/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -493,7 +493,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(3);
 
                 //check and create cooler's avatar
-                string path = AssemblyPath + "/Image/Cooler/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/Cooler/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -525,7 +525,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(6);
 
                 //check and create ODD's avatar
-                string path = AssemblyPath + "/Image/ODD/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/ODD/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
@@ -558,7 +558,7 @@ namespace DesktopBuilder.Classes
                 tmp.Price = myReader.GetInt32(7);
 
                 //check and create soundcard's avatar
-                string path = AssemblyPath + "/Image/SC/" + tmp.ID.ToString() + ".jpg";
+                string path = AssemblyPath + "/Image/SC/" + tmp.ID.ToString() + ".png";
                 if (File.Exists(path))
                     tmp.Avatar = new BitmapImage(new Uri(path));
 
