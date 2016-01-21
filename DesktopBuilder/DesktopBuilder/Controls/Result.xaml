@@ -20,19 +20,19 @@
         <Label Content="ODD:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,383,0,0" FontWeight="Bold" Foreground="#2F5E73" FontSize="16"/>
         <Label Content="Sound Card:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,414,0,0" FontWeight="Bold" Foreground="#2F5E73" FontSize="16"/>
         <Label Content="Total" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="442,443,0,0" FontWeight="Bold" Foreground="#2F5E73" FontSize="16"/>
-        
-        <TextBlock x:Name="tbCPU" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,76,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbMain" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,107,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbRAM" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,138,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbHDD" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,169,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbSSD" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,200,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbVGA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,231,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbPSU" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,262,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbCase" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,293,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbFan" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,324,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbCooler" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,355,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbODD" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,386,0,0" Foreground="#2F5E73" FontSize="17"/>
-        <TextBlock x:Name="tbSC" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,417,0,0" Foreground="#2F5E73" FontSize="17"/>
+
+        <TextBox x:Name="tbCPU" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,76,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbMain" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,107,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbRAM" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,138,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbHDD" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,169,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbSSD" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,200,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbVGA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,231,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbPSU" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,262,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbCase" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,293,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbFan" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,324,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbCooler" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,355,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbODD" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,386,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox x:Name="tbSC" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,417,0,0" Foreground="#2F5E73" FontSize="17" Background="Transparent" IsReadOnly="True" BorderThickness="0"/>
 
         <TextBlock x:Name="tbCPUPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="506,77,0,0"  Foreground="#2F5E73" FontSize="17"/>
         <TextBlock x:Name="tbMainPrice" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="506,109,0,0"  Foreground="#2F5E73" FontSize="17"/>

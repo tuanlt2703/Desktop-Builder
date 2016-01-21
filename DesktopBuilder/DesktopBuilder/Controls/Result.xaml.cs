@@ -34,7 +34,7 @@ namespace DesktopBuilder.Controls
         private ProductList pList;
         private List<int> SelectedList;// = new List<int>(new int[] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 });
 
-        private List<TextBlock> TBList = new List<TextBlock>(12);
+        private List<TextBox> TBList = new List<TextBox>(12);
         private List<TextBlock> PriceList = new List<TextBlock>(12);
         #endregion
 
@@ -63,9 +63,11 @@ namespace DesktopBuilder.Controls
         private void DoWord()
         {
             //reset result-form
-            foreach (TextBlock tb in TBList)
+            foreach (TextBox tb in TBList)
                 tb.Text = "";
+
             int total = 0;
+
             for (int i = 0; i < SelectedList.Count; i++)
             {
                 if (SelectedList[i] != -1)
