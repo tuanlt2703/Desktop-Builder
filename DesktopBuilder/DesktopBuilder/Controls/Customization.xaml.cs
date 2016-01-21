@@ -27,215 +27,256 @@ namespace DesktopBuilder.Controls
         {
             InitializeComponent();
             cbList.Add(CPUList);
+            tbList.Add(tbCPUPrice);
             cbList.Add(MainboardList);
+            tbList.Add(tbMainbPrice);
             cbList.Add(RAMList);
+            tbList.Add(tbRAMPrice);
             cbList.Add(HDD1_List);
+            tbList.Add(tbHDD1Price);
             cbList.Add(HDD2_List);
+            tbList.Add(tbHDD2Price);
             cbList.Add(SSD1_List);
+            tbList.Add(tbSSD1Price);
             cbList.Add(SSD2_List);
-            cbList.Add(VGAList);            
+            tbList.Add(tbSSD2Price);
+            cbList.Add(VGAList);
+            tbList.Add(tbVGAPrice);
             cbList.Add(PSUList);
+            tbList.Add(tbPSUPrice);
             cbList.Add(CaseList);
+            tbList.Add(tbCasePrice);
             cbList.Add(FanCaseList);
+            tbList.Add(tbFanCasePrice);
             cbList.Add(AirCoolerList);
+            tbList.Add(tbAirCoolerPrice);
             cbList.Add(ODDList);
+            tbList.Add(tbODDPrice);
             cbList.Add(SoundCardList);
-
-            
+            tbList.Add(tbSCPrice);
         }
         #endregion
 
         #region Properties
+        private int Total;
+        private int[] SelectedPrice = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         private List<ComboBox> cbList = new List<ComboBox>();
+        private List<TextBlock> tbList = new List<TextBlock>();
         private List<bool> errList = new List<bool>();
         private bool Save = false;
         public MainWindow Main { get; set; }
         #endregion
 
         #region Events
-        private void HDD1_List_DropDownClosed(object sender, EventArgs e)
+        private void HDD1_List_DropDownClosed(object sender, EventArgs e) //index = 3
         {
             if (HDD1_List.SelectedIndex > 0) // selected another HDD
             {
                 //index of selected HDD in full list
                 int selectedHDD = SearchComponent(3, HDD1_List.SelectedItem.ToString()); // 3 = HDDList's index
+                
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[3]);
+                SelectedPrice[3] = (Main.pList.List(3)[selectedHDD] as HDD).Price;
+                UpdateTotalPrice(SelectedPrice[3]);
 
                 //Update price of selected HDD
-                int price = (Main.pList.List(3)[selectedHDD] as HDD).Price;
-                if (price > 10000)
-                    tbHDD1Price.Text = price.ToString().Insert(2, ".") + ".000";
-                else if (price > 1000)
-                    tbHDD1Price.Text = price.ToString().Insert(1, ".") + ".000";
-                else
-                    tbHDD1Price.Text = price.ToString() + ".000";
-
+                SetTbText(tbHDD1Price, SelectedPrice[3]);
             }
             else if (HDD1_List.SelectedIndex == 0) //deselect HDD
             {
-                tbHDD1Price.Text = ""; //no item selected, price = 0               
+                tbHDD1Price.Text = ""; //no item selected, price = 0
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[3]);
+                SelectedPrice[3] = 0;
             }
         }
-        private void HDD2_List_DropDownClosed(object sender, EventArgs e)
+        private void HDD2_List_DropDownClosed(object sender, EventArgs e) //index = 4
         {
             if (HDD2_List.SelectedIndex > 0) // selected another HDD
             {
                 //index of selected HDD in full list
                 int selectedHDD = SearchComponent(3, HDD2_List.SelectedItem.ToString()); // 3 = HDDList's index
 
-                //Update price of selected HDD
-                int price = (Main.pList.List(3)[selectedHDD] as HDD).Price;
-                if (price > 10000)
-                    tbHDD2Price.Text = price.ToString().Insert(2, ".") + ".000";
-                else if (price > 1000)
-                    tbHDD2Price.Text = price.ToString().Insert(1, ".") + ".000";
-                else
-                    tbHDD2Price.Text = price.ToString() + ".000";
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[4]);
+                SelectedPrice[4] = (Main.pList.List(3)[selectedHDD] as HDD).Price;
+                UpdateTotalPrice(SelectedPrice[4]);
 
+                //Update price of selected HDD
+                SetTbText(tbHDD2Price, SelectedPrice[4]);
             }
             else if (HDD2_List.SelectedIndex == 0) //deselect HDD
             {
-                tbHDD2Price.Text = ""; //no item selected, price = 0               
+                tbHDD2Price.Text = ""; //no item selected, price = 0
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[4]);
+                SelectedPrice[4] = 0;
             }
         }
-        private void SSD1_List_DropDownClosed(object sender, EventArgs e)
+        private void SSD1_List_DropDownClosed(object sender, EventArgs e) //index = 5
         {
             if (SSD1_List.SelectedIndex > 0) // selected another SSD
             {
                 //index of selected SSD in full list
                 int selectedSSD = SearchComponent(4, SSD1_List.SelectedItem.ToString()); // 4 = SSDList's index
 
-                //Update price of selected SSD
-                int price = (Main.pList.List(4)[selectedSSD] as SSD).Price;
-                if (price > 10000)
-                    tbSSD1Price.Text = price.ToString().Insert(2, ".") + ".000";
-                else if (price > 1000)
-                    tbSSD1Price.Text = price.ToString().Insert(1, ".") + ".000";
-                else
-                    tbSSD1Price.Text = price.ToString() + ".000";
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[5]);
+                SelectedPrice[5] = (Main.pList.List(4)[selectedSSD] as SSD).Price;
+                UpdateTotalPrice(SelectedPrice[5]);
 
+                //Update price of selected SSD
+                SetTbText(tbSSD1Price, SelectedPrice[5]);
             }
             else if (SSD1_List.SelectedIndex == 0) //deselect SSD
             {
-                tbSSD1Price.Text = ""; //no item selected, price = 0               
+                tbSSD1Price.Text = ""; //no item selected, price = 0         
+      
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[5]);
+                SelectedPrice[5] = 0;
             }
         }
-        private void SSD2_List_DropDownClosed(object sender, EventArgs e)
+        private void SSD2_List_DropDownClosed(object sender, EventArgs e) //index = 6
         {
             if (SSD2_List.SelectedIndex > 0) // selected another SSD
             {
                 //index of selected SSD in full list
                 int selectedSSD = SearchComponent(4, SSD2_List.SelectedItem.ToString()); // 4 = SSDList's index
 
-                //Update price of selected SSD
-                int price = (Main.pList.List(4)[selectedSSD] as SSD).Price;
-                if (price > 10000)
-                    tbSSD2Price.Text = price.ToString().Insert(2, ".") + ".000";
-                else if (price > 1000)
-                    tbSSD2Price.Text = price.ToString().Insert(1, ".") + ".000";
-                else
-                    tbSSD2Price.Text = price.ToString() + ".000";
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[6]);
+                SelectedPrice[6] = (Main.pList.List(4)[selectedSSD] as SSD).Price;
+                UpdateTotalPrice(SelectedPrice[6]);
 
+                //Update price of selected SSD
+                SetTbText(tbSSD2Price, SelectedPrice[6]);
             }
             else if (SSD2_List.SelectedIndex == 0) //deselect SSD
             {
-                tbSSD2Price.Text = ""; //no item selected, price = 0               
+                tbSSD2Price.Text = ""; //no item selected, price = 0
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[6]);
+                SelectedPrice[6] = 0;
             }
         }
-        private void FanCaseList_DropDownClosed(object sender, EventArgs e)
+        private void FanCaseList_DropDownClosed(object sender, EventArgs e) //index = 10
         {
             if (FanCaseList.SelectedIndex > 0) // selected another Fan
             {
                 //index of selected Fan in full list
                 int selectedFan = SearchComponent(8, FanCaseList.SelectedItem.ToString()); // 8 = FanCaseList's index
 
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[10]);
+                SelectedPrice[10] = (Main.pList.List(8)[selectedFan] as FanCase).Price;
+                UpdateTotalPrice(SelectedPrice[10]);
+
                 //Update price of selected Fan
-                int price = (Main.pList.List(8)[selectedFan] as FanCase).Price;
-                //if (price > 10000)
-                //    tbFanCasePrice.Text = price.ToString().Insert(2, ".") + ".000";
-                //else 
-                if (price > 1000)
-                    tbFanCasePrice.Text = price.ToString().Insert(1, ".") + ".000";
-                else
-                    tbFanCasePrice.Text = price.ToString() + ".000";
+                SetTbText(tbFanCasePrice, SelectedPrice[10]);
             }
             else if (FanCaseList.SelectedIndex == 0) //deselect Fan
             {
-                tbFanCasePrice.Text = ""; //no item selected, price = 0               
+                tbFanCasePrice.Text = ""; //no item selected, price = 0
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[10]);
+                SelectedPrice[10] = 0;
             }
         }
-        private void AirCoolerList_DropDownClosed(object sender, EventArgs e)
+        private void AirCoolerList_DropDownClosed(object sender, EventArgs e) //index = 11
         {
             if (AirCoolerList.SelectedIndex > 0) // selected another AirCooler
             {
                 //index of selected AirCooler in full list
                 int selectedAC = SearchComponent(9, AirCoolerList.SelectedItem.ToString()); // 9 = AirCoolerList's index
 
-                //Update price of selected AirCooler
-                int price = (Main.pList.List(9)[selectedAC] as AirCPUCooler).Price;
-                //if (price > 10000)
-                //    tbAirCoolerPrice.Text = price.ToString().Insert(2, ".") + ".000";
-                //else 
-                if (price > 1000)
-                    tbAirCoolerPrice.Text = price.ToString().Insert(1, ".") + ".000";
-                else
-                    tbAirCoolerPrice.Text = price.ToString() + ".000";
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[11]);
+                SelectedPrice[11] = (Main.pList.List(9)[selectedAC] as AirCPUCooler).Price;
+                UpdateTotalPrice(SelectedPrice[11]);
+
+                //Update price of selected Cooler
+                SetTbText(tbAirCoolerPrice, SelectedPrice[11]);
             }
             else if (AirCoolerList.SelectedIndex == 0) //deselect AirCooler
             {
-                tbAirCoolerPrice.Text = ""; //no item selected, price = 0               
+                tbAirCoolerPrice.Text = ""; //no item selected, price = 0
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[11]);
+                SelectedPrice[11] = 0;
             }
         }
-        private void ODDList_DropDownClosed(object sender, EventArgs e)
+        private void ODDList_DropDownClosed(object sender, EventArgs e) //index = 12
         {
             if (ODDList.SelectedIndex > 0) // selected another ODD
             {
                 //index of selected ODD in full list
                 int selectedODD = SearchComponent(10, ODDList.SelectedItem.ToString()); // 10 = ODDList's index
 
-                //Update price of selected ODD
-                int price = (Main.pList.List(10)[selectedODD] as ODD).Price;
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[12]);
+                SelectedPrice[12] = (Main.pList.List(10)[selectedODD] as ODD).Price;
+                UpdateTotalPrice(SelectedPrice[12]);
 
-                if (price > 1000)
-                    tbODDPrice.Text = price.ToString().Insert(1, ".") + ".000";
-                else
-                    tbODDPrice.Text = price.ToString() + ".000";
+                //Update price of selected ODD
+                SetTbText(tbODDPrice, SelectedPrice[12]);
             }
             else if (ODDList.SelectedIndex == 0) //deselect ODD
             {
-                tbODDPrice.Text = ""; //no item selected, price = 0               
+                tbODDPrice.Text = ""; //no item selected, price = 0
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[12]);
+                SelectedPrice[12] = 0;
             }
         }
-        private void SoundCardList_DropDownClosed(object sender, EventArgs e)
+        private void SoundCardList_DropDownClosed(object sender, EventArgs e) //index = 13
         {
             if (SoundCardList.SelectedIndex > 0) // selected another SoundCard
             {
                 //index of selected SoundCard in full list
                 int selectedSC = SearchComponent(11, SoundCardList.SelectedItem.ToString()); // 11 = SoundCardList's index
 
-                //Update price of selected SoundCard
-                int price = (Main.pList.List(11)[selectedSC] as SoundCard).Price;
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[13]);
+                SelectedPrice[13] = (Main.pList.List(11)[selectedSC] as SoundCard).Price;
+                UpdateTotalPrice(SelectedPrice[13]);
 
-                if (price > 1000)
-                    tbSCPrice.Text = price.ToString().Insert(1, ".") + ".000";
-                else
-                    tbSCPrice.Text = price.ToString() + ".000";
+                //Update price of selected ODD
+                SetTbText(tbSCPrice, SelectedPrice[13]);
             }
             else if (SoundCardList.SelectedIndex == 0) //deselect SoundCard
             {
-                tbSCPrice.Text = ""; //no item selected, price = 0               
+                tbSCPrice.Text = ""; //no item selected, price = 0
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[13]);
+                SelectedPrice[13] = 0;
             }
         }
 
-        private void MainboardList_DropDownClosed(object sender, EventArgs e)
+        private void MainboardList_DropDownClosed(object sender, EventArgs e) //index = 1
         {
             if (MainboardList.SelectedIndex > 0) // selected another Mainboard
             {
                 //index of selected mainboard in full list
                 int selectedMain = SearchComponent(1, MainboardList.SelectedItem.ToString()); // 1 = MainboardList's index
 
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[1]);
+                SelectedPrice[1] = (Main.pList.List(1)[selectedMain] as Mainboard).Price;
+                UpdateTotalPrice(SelectedPrice[1]);
+
                 //Update price of selected Mainboard
-                tbMainbPrice.Text = (Main.pList.List(1)[selectedMain] as Mainboard).Price.ToString()
-                    .Insert((Main.pList.List(1)[selectedMain] as Mainboard).Price > 10000 ? 2 : 1, ".") + ".000";
+                SetTbText(tbMainbPrice, SelectedPrice[1]);
+
                 #region CPU
                 if (CPUList.SelectedIndex > 0) // check whether this mainboard support selected cpu or not
                 {
@@ -243,20 +284,27 @@ namespace DesktopBuilder.Controls
                     int selectedCPU = SearchComponent(0, CPUList.SelectedItem.ToString()); // 0 = CPUList's index
                     if ((Main.pList.List(0)[selectedCPU] as CPU).Socket != (Main.pList.List(1)[selectedMain] as Mainboard).Socket) //not supported
                     {
+                        if (!errList[0])
+                            //Update total price
+                            UpdateTotalPrice(-SelectedPrice[0]);
+
                         errList[0] = true;
-                        SetTbText(tbCPUPrice, "Socket không hỗ trợ!", true);
+
+                        //ShowError
+                        SetTbText(tbCPUPrice, 0, true, "Socket không hỗ trợ!");
+
+                        
                     }
                     else // supported
                     {
+                        if (errList[0])
+                            //Update total price
+                            UpdateTotalPrice(SelectedPrice[0]);
+
                         errList[0] = false;
-                        //Update price of selected CPU
-                        int price = (Main.pList.List(0)[selectedCPU] as CPU).Price; // 0 = CPUList's index
-                        if (price > 10000)
-                            SetTbText(tbCPUPrice, price.ToString().Insert(2, ".") + ".000");
-                        else if (price > 1000)
-                            SetTbText(tbCPUPrice, price.ToString().Insert(1, ".") + ".000");
-                        else
-                            SetTbText(tbCPUPrice, price.ToString() + ".000");
+
+                        //Update price of selected psu
+                        SetTbText(tbCPUPrice, SelectedPrice[0]);
                     }
                 }
                 #endregion
@@ -264,22 +312,29 @@ namespace DesktopBuilder.Controls
                 #region RAM
                 if (RAMList.SelectedIndex > 0) // check whether this mainboard support selected RAM or not
                 {
-                    errList[1] = true;
                     //index of selected cpu in full list
                     int selectedRAM = SearchComponent(2, RAMList.SelectedItem.ToString()); // 2 = RAMList's index
                     if ((Main.pList.List(2)[selectedRAM] as RAM).memType != (Main.pList.List(1)[selectedMain] as Mainboard).memType) //not supported
                     {
-                        SetTbText(tbRAMPrice, "RAM không hỗ trợ!", true);
+                        if (!errList[1])
+                            //Update total price
+                            UpdateTotalPrice(-SelectedPrice[2]);
+
+                        errList[1] = true;
+
+                        //ShowError
+                        SetTbText(tbRAMPrice, 0, true, "RAM không hỗ trợ!");
                     }
                     else // supported
                     {
+                        if (errList[1])
+                            //Update total price
+                            UpdateTotalPrice(SelectedPrice[2]);
+
                         errList[1] = false;
-                        //Update price of selected RAM
-                        int price = (Main.pList.List(2)[selectedRAM] as RAM).Price;
-                        if (price > 1000)
-                            SetTbText(tbRAMPrice, price.ToString().Insert(1, ".") + ".000");
-                        else
-                            SetTbText(tbRAMPrice, price.ToString() + ".000");
+
+                        //Update price of selected psu
+                        SetTbText(tbRAMPrice, SelectedPrice[2]);
                     }
                 }
                 #endregion
@@ -287,22 +342,29 @@ namespace DesktopBuilder.Controls
                 #region Case
                 if (CaseList.SelectedIndex > 0) // check whether this mainboard fit in selected Case or not
                 {
-                    errList[2] = true;
                     //index of selected Case in full list
                     int selectedCase = SearchComponent(7, CaseList.SelectedItem.ToString()); // 7 = CaseList's index
                     if ((Main.pList.List(7)[selectedCase] as Case).Size < (Main.pList.List(1)[selectedMain] as Mainboard).Size) //not supported
                     {
-                        SetTbText(tbCasePrice, "Case nhỏ hơn Mainboard!", true);
+                        if (!errList[2])
+                            //Update total price
+                            UpdateTotalPrice(-SelectedPrice[9]);
+
+                        errList[2] = true;
+
+                        //ShowError
+                        SetTbText(tbCasePrice, 0, true, "Case nhỏ hơn Mainboard!");
                     }
                     else // supported
                     {
+                        if (errList[2])
+                            //Update total price
+                            UpdateTotalPrice(SelectedPrice[9]);
+
                         errList[2] = false;
-                        //Update price of selected Case
-                        int price = (Main.pList.List(7)[selectedCase] as Case).Price;
-                        if (price > 1000)
-                            SetTbText(tbCasePrice, price.ToString().Insert(1, ".") + ".000");
-                        else
-                            SetTbText(tbCasePrice, price.ToString() + ".000");
+
+                        //Update price of selected psu
+                        SetTbText(tbCasePrice, SelectedPrice[9]);
                     }
                 }
                 #endregion
@@ -310,73 +372,70 @@ namespace DesktopBuilder.Controls
             else if (MainboardList.SelectedIndex == 0) //deselect Mainboard
             {
                 tbMainbPrice.Text = ""; //no item selected, price = 0
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[1]);
+                SelectedPrice[1] = 0;
+
                 //more optimal solution: check whether previous conflict exits, if so re-update price//
                 #region CPU
                 if (CPUList.SelectedIndex > 0)
                 {
-                    errList[0] = true;
-                    //index of selected cpu in full list
-                    int selectedCPU = SearchComponent(0, CPUList.SelectedItem.ToString()); // 0 = CPUList's index
+                    //Update total price
+                    if (errList[0])
+                        UpdateTotalPrice(SelectedPrice[0]);
+
+                    errList[0] = false;
 
                     //Update price of selected CPU
-                    int price = (Main.pList.List(0)[selectedCPU] as CPU).Price; // 0 = CPUList's index
-                    if (price > 10000)
-                        SetTbText(tbCPUPrice, price.ToString().Insert(2, ".") + ".000");
-                    else if (price > 1000)
-                        SetTbText(tbCPUPrice, price.ToString().Insert(1, ".") + ".000");
-                    else
-                        SetTbText(tbCPUPrice, price.ToString() + ".000");
+                    SetTbText(tbCPUPrice, SelectedPrice[0]);
                 }
                 #endregion
 
                 #region RAM
                 if (RAMList.SelectedIndex > 0)
                 {
-                    errList[0] = true;
-                    //index of selected RAM in full list
-                    int selectedRAM = SearchComponent(2, RAMList.SelectedItem.ToString()); // 2 = RAMList's index
+                    //Update total price
+                    if (errList[1])
+                        UpdateTotalPrice(SelectedPrice[2]);
 
-                    //Update price of selected RAM
-                    int price = (Main.pList.List(2)[selectedRAM] as RAM).Price;
-                    if (price > 1000)
-                        SetTbText(tbRAMPrice, price.ToString().Insert(1, ".") + ".000");
-                    else
-                        SetTbText(tbRAMPrice, price.ToString() + ".000");
+                    errList[1] = false;
+
+                    //Update price of selected CPU
+                    SetTbText(tbRAMPrice, SelectedPrice[2]);
                 }
                 #endregion
 
                 #region Case
                 if (CaseList.SelectedIndex > 0) // check whether this mainboard support selected RAM or not
                 {
-                    errList[0] = true;
-                    //index of selected Case in full list
-                    int selectedCase = SearchComponent(7, CaseList.SelectedItem.ToString()); // 7 = CaseList's index
+                    //Update total price
+                    if (errList[2])
+                        UpdateTotalPrice(SelectedPrice[9]);
 
-                    //Update price of selected Case
-                    int price = (Main.pList.List(7)[selectedCase] as Case).Price;
-                    if (price > 1000)
-                        SetTbText(tbCasePrice, price.ToString().Insert(1, ".") + ".000");
-                    else
-                        SetTbText(tbCasePrice, price.ToString() + ".000");
+                    errList[2] = false;
+
+                    //Update price of selected CPU
+                    SetTbText(tbCasePrice, SelectedPrice[9]);
                 }
                 #endregion
             }
         }
-        private void CPUList_DropDownClosed(object sender, EventArgs e)
+        private void CPUList_DropDownClosed(object sender, EventArgs e) //index = 0
         {
             if (CPUList.SelectedIndex > 0) // selected another CPU
             {
                 //index of selected cpu in full list
                 int selectedCPU = SearchComponent(0, CPUList.SelectedItem.ToString()); // 0 = CPUList's index
 
+                //Update total price
+                if (!errList[0])
+                    UpdateTotalPrice(-SelectedPrice[0]);
+                SelectedPrice[0] = (Main.pList.List(0)[selectedCPU] as CPU).Price;
+                UpdateTotalPrice(SelectedPrice[0]);
+
                 //Update price of selected CPU
-                int price = (Main.pList.List(0)[selectedCPU] as CPU).Price; // 0 = CPUList's index
-                if (price >= 10000)
-                    SetTbText(tbCPUPrice, price.ToString().Insert(2, ".") + ".000");
-                else if (price >= 1000)
-                    SetTbText(tbCPUPrice, price.ToString().Insert(1, ".") + ".000");
-                else
-                    SetTbText(tbCPUPrice, price.ToString() + ".000");
+                SetTbText(tbCPUPrice, SelectedPrice[0]);
 
                 if (MainboardList.SelectedIndex > 0) //check whether selected mainboard support this cpu or not
                 {
@@ -386,29 +445,42 @@ namespace DesktopBuilder.Controls
                     if ((Main.pList.List(0)[selectedCPU] as CPU).Socket != (Main.pList.List(1)[selectedMain] as Mainboard).Socket) // not supported
                     {
                         errList[0] = true;
-                        SetTbText(tbCPUPrice, "Socket không hỗ trợ!", true);
+
+                        //Update total price
+                        UpdateTotalPrice(-SelectedPrice[0]);
+
+                        //ShowError
+                        SetTbText(tbCPUPrice, 0, true, "Socket không hỗ trợ!");
                     }
                 }
             }
             else if (CPUList.SelectedIndex == 0) //deselect CPU
             {
+                //Update total price
+                if (!errList[0])
+                    UpdateTotalPrice(-SelectedPrice[0]);
+                SelectedPrice[0] = 0;
+
                 errList[0] = false;
-                tbCPUPrice.Text = ""; //no item selected, price = 0            
+                tbCPUPrice.Text = ""; //no item selected, price = 0
             }
         }
-        private void RAMList_DropDownClosed(object sender, EventArgs e)
+        private void RAMList_DropDownClosed(object sender, EventArgs e) //index = 2
         {
             if (RAMList.SelectedIndex > 0) // selected another CPU
             {
                 //index of selected RAM in full list
                 int selectedRAM = SearchComponent(2, RAMList.SelectedItem.ToString()); // 2 = RAMList's index
 
+                //Update total price
+                if (!errList[1])
+                    UpdateTotalPrice(-SelectedPrice[2]);
+                SelectedPrice[2] = (Main.pList.List(2)[selectedRAM] as RAM).Price;
+                UpdateTotalPrice(SelectedPrice[2]);
+
                 //Update price of selected RAM
-                int price = (Main.pList.List(2)[selectedRAM] as RAM).Price;
-                if (price > 1000)
-                    SetTbText(tbRAMPrice, price.ToString().Insert(1, ".") + ".000");
-                else
-                    SetTbText(tbRAMPrice, price.ToString() + ".000");
+                SetTbText(tbRAMPrice, SelectedPrice[2]);
+
 
                 if (MainboardList.SelectedIndex > 0)
                 {
@@ -419,85 +491,117 @@ namespace DesktopBuilder.Controls
                     if ((Main.pList.List(2)[selectedRAM] as RAM).memType != (Main.pList.List(1)[selectedMain] as Mainboard).memType)
                     {
                         errList[1] = true;
-                        SetTbText(tbRAMPrice, "RAM không hỗ trợ!", true);
+
+                        //Update total price
+                        UpdateTotalPrice(-SelectedPrice[2]);
+
+                        //ShowError
+                        SetTbText(tbRAMPrice, 0, true, "RAM không hỗ trợ!");
                     }
                 }
             }
             else if (RAMList.SelectedIndex == 0) //deselect RAM
             {
+                //Update total price
+                if (!errList[1])
+                    UpdateTotalPrice(-SelectedPrice[2]);
+                SelectedPrice[2] = 0;
+
                 errList[1] = false;
                 tbRAMPrice.Text = ""; //no item selected, price = 0               
             }
         }
-        private void CaseList_DropDownClosed(object sender, EventArgs e)
+        private void CaseList_DropDownClosed(object sender, EventArgs e) //index = 9
         {
             if (CaseList.SelectedIndex > 0) // selected another CPU
             {
-                //index of selected RAM in full list
-                int selectedCase = SearchComponent(7, CaseList.SelectedItem.ToString()); // 2 = RAMList's index
+                //index of selected Case in full list
+                int selectedCase = SearchComponent(7, CaseList.SelectedItem.ToString()); // 7 = RAMList's index
 
-                //Update price of selected RAM
-                int price = (Main.pList.List(7)[selectedCase] as Case).Price;
-                if (price > 1000)
-                    SetTbText(tbCasePrice, price.ToString().Insert(1, ".") + ".000");
-                else
-                    SetTbText(tbCasePrice, price.ToString() + ".000");
+                //Update total price
+                if (!errList[2])
+                    UpdateTotalPrice(-SelectedPrice[9]);
+                SelectedPrice[9] = (Main.pList.List(7)[selectedCase] as Case).Price;
+                UpdateTotalPrice(SelectedPrice[9]);
+
+                //Update price of selected Case
+                SetTbText(tbCasePrice, SelectedPrice[9]);
 
                 if (MainboardList.SelectedIndex > 0)
                 {
                     errList[2] = false;
-                    //index of selected cpu in full list
+                    //index of selected Mainboard in full list
                     int selectedMain = SearchComponent(1, MainboardList.SelectedItem.ToString()); // 1 = MainboardList's index
 
                     if ((Main.pList.List(7)[selectedCase] as Case).Size < (Main.pList.List(1)[selectedMain] as Mainboard).Size)
                     {
                         errList[2] = true;
-                        SetTbText(tbCasePrice, "Case nhỏ hơn Mainboard!", true);
+
+                        //Update total price
+                        UpdateTotalPrice(-SelectedPrice[9]);
+
+                        //ShowError
+                        SetTbText(tbCasePrice, 0, true, "Case nhỏ hơn Mainboard!");
                     }
                 }
             }
             else if (CaseList.SelectedIndex == 0) //deselect RAM
             {
+                //Update total price
+                if (!errList[2])
+                    UpdateTotalPrice(-SelectedPrice[9]);
+                SelectedPrice[9] = 0;
+
                 errList[2] = false;
-                tbCasePrice.Text = ""; //no item selected, price = 0               
+                tbCasePrice.Text = ""; //no item selected, price = 0
+                
             }
         }
 
-        private void VGAList_DropDownClosed(object sender, EventArgs e)
+        private void VGAList_DropDownClosed(object sender, EventArgs e) //index = 7
         {
             if (VGAList.SelectedIndex > 0) // selected another VGA
             {
                 //index of selected VGA in full list
                 int selectedVGA = SearchComponent(5, VGAList.SelectedItem.ToString()); // 5 = VGAList's index
 
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[7]);
+                SelectedPrice[7] = (Main.pList.List(5)[selectedVGA] as VGA).Price;
+                UpdateTotalPrice(SelectedPrice[7]);
+
                 //Update price of selected VGA
-                int price = (Main.pList.List(5)[selectedVGA] as VGA).Price;
-                if (price > 10000)
-                    SetTbText(tbVGAPrice, price.ToString().Insert(2, ".") + ".000");
-                else if (price > 1000)
-                    SetTbText(tbVGAPrice, price.ToString().Insert(1, ".") + ".000");
-                else
-                    SetTbText(tbVGAPrice, price.ToString() + ".000");
+                SetTbText(tbVGAPrice, SelectedPrice[7]);
 
                 #region PSU
                 if (PSUList.SelectedIndex > 0) // check whether this PSU supply enough power for selected VGA or not
                 {
                     //index of selected PSU in full list
                     int selectedPSU = SearchComponent(6, PSUList.SelectedItem.ToString()); // 6 = PSUList's index
+
                     if ((Main.pList.List(6)[selectedPSU] as PSU).Power < (Main.pList.List(5)[selectedVGA] as VGA).PowReq + 50)
                     {
+                        if (!errList[3])
+                            //Update total price
+                            UpdateTotalPrice(-SelectedPrice[8]);
+
                         errList[3] = true;
-                        SetTbText(tbPSUPrice, "Nguồn không đủ!", true);
+
+                        //ShowError
+                        SetTbText(tbPSUPrice, 0, true, "Nguồn không đủ!");
+
+                        
                     }
                     else
                     {
+                        if (errList[3])
+                            //Update total price
+                            UpdateTotalPrice(SelectedPrice[8]);
+
                         errList[3] = false;
-                        //Update price of selected PSU
-                        int price1 = (Main.pList.List(6)[selectedPSU] as PSU).Price;
-                        if (price1 > 1000)
-                            SetTbText(tbPSUPrice, price1.ToString().Insert(1, ".") + ".000");
-                        else
-                            SetTbText(tbPSUPrice, price1.ToString() + ".000");
+
+                        //Update price of selected psu
+                        SetTbText(tbPSUPrice, SelectedPrice[8]);
                     }
                 }
                 #endregion
@@ -505,37 +609,42 @@ namespace DesktopBuilder.Controls
             else if (VGAList.SelectedIndex == 0) //deselect VGA
             {
                 tbVGAPrice.Text = ""; //no item selected, price = 0
+
+                //Update total price
+                UpdateTotalPrice(-SelectedPrice[7]);
+                SelectedPrice[7] = 0;
+
                 //more optimal solution: check whether previous conflict exits, if so re-update price//
                 #region PSU
                 if (PSUList.SelectedIndex > 0) // check whether this PSU supply enough power for selected VGA or not
                 {
-                    errList[3] = false;
-                    //index of selected PSU in full list
-                    int selectedPSU = SearchComponent(6, PSUList.SelectedItem.ToString()); // 7 = CaseList's index
+                    //Update total price
+                    if (errList[3])
+                        UpdateTotalPrice(SelectedPrice[8]);
 
-                    //Update price of selected PSU
-                    int price1 = (Main.pList.List(6)[selectedPSU] as PSU).Price;
-                    if (price1 > 1000)
-                        SetTbText(tbPSUPrice, price1.ToString().Insert(1, ".") + ".000");
-                    else
-                        SetTbText(tbPSUPrice, price1.ToString() + ".000");
+                    errList[3] = false;
+
+                    //Update price of selected psu
+                    SetTbText(tbPSUPrice, SelectedPrice[8]);                                 
                 }
                 #endregion
             }
         }
-        private void PSUList_DropDownClosed(object sender, EventArgs e)
+        private void PSUList_DropDownClosed(object sender, EventArgs e) //index = 8
         {
             if (PSUList.SelectedIndex > 0) // 
             {
                 //
                 int selectedPSU = SearchComponent(6, PSUList.SelectedItem.ToString()); //
 
-                //
-                int price = (Main.pList.List(6)[selectedPSU] as PSU).Price;
-                if (price > 1000)
-                    SetTbText(tbPSUPrice,price.ToString().Insert(1, ".") + ".000");
-                else
-                    SetTbText(tbPSUPrice, price.ToString() + ".000");
+                //Update total price
+                if (!errList[3])
+                    UpdateTotalPrice(-SelectedPrice[8]);
+                SelectedPrice[8] = (Main.pList.List(6)[selectedPSU] as PSU).Price;
+                UpdateTotalPrice(SelectedPrice[8]);
+
+                //Update price of selected psu
+                SetTbText(tbPSUPrice, SelectedPrice[8]);
 
                 if (VGAList.SelectedIndex > 0)
                 {
@@ -546,14 +655,24 @@ namespace DesktopBuilder.Controls
                     if ((Main.pList.List(6)[selectedPSU] as PSU).Power < (Main.pList.List(5)[selectedVGA] as VGA).PowReq + 50)
                     {
                         errList[3] = true;
-                        SetTbText(tbPSUPrice, "Case nhỏ hơn Mainboard!", true);
+
+                        //Update total price
+                        UpdateTotalPrice(-SelectedPrice[8]);
+
+                        //ShowError
+                        SetTbText(tbPSUPrice, 0, true, "Nguồn không đủ!");
                     }
                 }
             }
             else if (PSUList.SelectedIndex == 0) //
             {
+                //Update total price
+                if (!errList[3])
+                    UpdateTotalPrice(-SelectedPrice[8]);
+                SelectedPrice[8] = 0;
+
                 errList[3] = false;
-                tbPSUPrice.Text = ""; //             
+                tbPSUPrice.Text = ""; //                
             }
         }
         
@@ -580,14 +699,17 @@ namespace DesktopBuilder.Controls
             MessageBoxResult choice = MessageBox.Show("Clear all?", "Warnning", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if(choice == MessageBoxResult.Yes)
             {
-                InitCb();
+                ResetAll();
+
                 imgComplete.Visibility = Visibility.Hidden;
                 btnRS.Visibility = Visibility.Hidden;
+
                 btnBuild.Margin = new Thickness(276, 465, 0, 0);
                 btnBuild.Content = "Build!";
+
                 Save = false;
             }
-        }
+        }        
         #endregion
 
         #region Methods
@@ -639,14 +761,23 @@ namespace DesktopBuilder.Controls
             }
             return -1;
         }
-        private void SetTbText(TextBlock tb, string texttoshow, bool error=false)
+        private void SetTbText(TextBlock tb, int price, bool error = false, string err = "")
         {
             if (!error)
+            {
                 tb.Foreground = new SolidColorBrush(Color.FromRgb(0, 150, 136));
+                if (price > 10000)
+                    tb.Text = price.ToString().Insert(2, ".") + ".000";
+                else if (price > 1000)
+                    tb.Text = price.ToString().Insert(1, ".") + ".000";
+                else
+                    tb.Text = price.ToString() + ".000";
+            }
             else
+            {
                 tb.Foreground = Brushes.Red;
-
-            tb.Text = texttoshow;
+                tb.Text = err;
+            }          
         }
         public void InitCb()
         {
@@ -694,6 +825,33 @@ namespace DesktopBuilder.Controls
             errList.Add(false); // 1 = Mainboard - RAM error
             errList.Add(false); // 2 = Mainboard - Case error
             errList.Add(false); // 3 = VGA - PSU error
+        }
+        private void ResetAll()
+        {
+            for (int i = 0; i < cbList.Count; i++)
+            {
+                cbList[i].SelectedIndex = 0;
+            }
+            for (int i = 0; i < tbList.Count; i++)
+            {
+                tbList[i].Text = "";
+            }
+            UpdateTotalPrice(-Total);
+        }
+        private void UpdateTotalPrice(int price)
+        {
+            Total += price;
+            if (Total == 0)
+                tbTotal.Text = "";
+            else
+            {
+                if (Total > 10000)
+                    tbTotal.Text = Total.ToString().Insert(2, ".") + ".000 VNĐ";
+                else if (Total > 1000)
+                    tbTotal.Text = Total.ToString().Insert(1, ".") + ".000 VNĐ";
+                else
+                    tbTotal.Text = Total.ToString() + ".000 VNĐ";
+            }
         }
         #endregion            
     }

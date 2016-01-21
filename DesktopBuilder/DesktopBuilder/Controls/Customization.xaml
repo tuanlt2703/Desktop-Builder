@@ -56,5 +56,7 @@
 
         <Button x:Name="btnBuild" Content="Build!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="276,465,0,0" Width="93" Height="34" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
         <Button x:Name="btnRS" Content="Reset All" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,465,0,0" Width="93" Height="34" FontSize="20" FontWeight="Bold" Click="Button_Click_1" Visibility="Hidden"/>
+        <Label Content="Tổng: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="456,464,0,0" FontWeight="Bold" Foreground="#009688" FontSize="15"/>
+        <TextBlock x:Name="tbTotal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="511,471,0,0" TextWrapping="Wrap" FontWeight="Bold" Foreground="#009688" FontSize="13"/>
     </Grid>
 </UserControl>

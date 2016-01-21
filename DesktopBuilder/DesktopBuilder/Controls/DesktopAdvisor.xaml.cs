@@ -180,7 +180,7 @@ namespace DesktopBuilder.Controls
         }
         private bool UserMoney()
         {
-            string tmp = tbCash.Text.Replace(".", "").Replace("_", "");
+            string tmp = tbCash.Text.Replace(".", "").Replace(",", "").Replace("_", "");
             if (tmp.Length >= 7 && tmp.Length <= 9) 
             {
                 Money = Convert.ToUInt32(tmp);
